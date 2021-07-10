@@ -1,5 +1,6 @@
-var sin, mns = 0,tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb=[], mbs=0;
-document.getElementById("lct").innerText=new Date().getHours()+":"+new Date().getMinutes()
+var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0;
+document.getElementById("lct").innerText = new Date().getHours() + ":" + new Date().getMinutes();
+document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
 
 function da() {
 	if (!std) {
@@ -10,7 +11,7 @@ function da() {
 		var dte = new Date();
 		var csz = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 +
 			Number(document.getElementById("c").innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
-		sin = setInterval(function() {
+		sin = setInterval(function () {
 			var dts = new Date();
 			var mns = csz + Number(dts - dte);
 			if ((mns - mns % 3600000) / 3600000 >= 10) {
@@ -53,13 +54,13 @@ function db() {
 	if (str[7] == ".") str.splice(6, 0, "0");
 	if (str.length == 10) str.splice(9, 0, "0");
 	str = str.join("");
-	document.getElementById("tbl").innerHTML += ("<tr id='tr"+num+"'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" + str + "</td><td>" +
+	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" + str + "</td><td>" +
 		document.getElementById("div").innerText + "</td>");
-	sdb[sdb.length]=tfd-tfb;
-	for (var i = 0; i<sdb.length; i++){
-		if (sdb[i] == Math.max.apply(null,sdb)){
+	sdb[sdb.length] = tfd - tfb;
+	for (var i = 0; i < sdb.length; i++) {
+		if (sdb[i] == Math.max.apply(null, sdb)) {
 			document.getElementById("tr" + (i + 1)).getElementsByClassName("kmb")[0].innerText = "最慢";
-		} else if (sdb[i] == Math.min.apply(null,sdb)){
+		} else if (sdb[i] == Math.min.apply(null, sdb)) {
 			document.getElementById("tr" + (i + 1)).getElementsByClassName("kmb")[0].innerText = "最快";
 		} else {
 			document.getElementById("tr" + (i + 1)).getElementsByClassName("kmb")[0].innerText = "";
@@ -92,31 +93,31 @@ function fsc() {
 		document.getElementById("btb").style.display = "inline";
 		document.getElementById("tbl").style.display = "";
 		bfs = false;
-		document.getElementById("div").style.fontSize="70pt";
+		document.getElementById("div").style.fontSize = "70pt";
 	} else {
 		document.getElementsByTagName("html")[0].requestFullscreen();
 		document.getElementById("fcb").innerText = "还原";
 		document.getElementById("btb").style.display = "none";
 		document.getElementById("tbl").style.display = "none";
 		bfs = true;
-		document.getElementById("div").style.fontSize="100pt";
+		document.getElementById("div").style.fontSize = "100pt";
 	}
 }
 
-function sel(sle){
-	for(var i=0;i<=4;i++){
-		document.getElementById(["jsq","naz","sjz","mib","set"][i]).className=""
-		document.getElementById(["jishiqi","naozhong","shijieshizhong","miaobiao","shezhi"][i]).style.display="none"
-		if(sle==["jsq","naz","sjz","mib","set"][i]) mbs = i
+function sel(sle) {
+	for (var i = 0; i <= 4; i++) {
+		document.getElementById(["jsq", "naz", "sjz", "mib", "set"][i]).className = ""
+		document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][i]).style.display = "none"
+		if (sle == ["jsq", "naz", "sjz", "mib", "set"][i]) mbs = i
 	}
-	document.getElementById(sle).className="sld"
-	document.getElementById(["jishiqi","naozhong","shijieshizhong","miaobiao","shezhi"][mbs]).style.display="block"
+	document.getElementById(sle).className = "sld"
+	document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][mbs]).style.display = "block"
 }
 
-function tun(ltm){
-	if(ltm){
-		document.getElementsByTagName("html")[0].className=""
+function tun(ltm) {
+	if (ltm) {
+		document.getElementsByTagName("html")[0].className = ""
 	} else {
-		document.getElementsByTagName("html")[0].className="dke"
+		document.getElementsByTagName("html")[0].className = "dke"
 	}
 }
