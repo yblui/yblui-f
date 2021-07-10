@@ -1,0 +1,133 @@
+#div {
+	font-size: 70pt;
+	font-weight: 100;
+}
+
+* {
+	font-family: "Microsoft Yahei", sans-serif;
+	background-color: #f2f2f2;
+}
+
+.dke,.dke *{
+	background-color: #1f1f1f;
+	color: white;
+}
+
+.dke button{
+	background-color: #4c4c4c;
+}
+
+.dke button:enabled:hover, .dke #fcb:hover{
+	background-color: #353535;
+}
+
+.dke #ttr th{
+	border-bottom: solid 2px #4c4c4c;
+}
+
+table {
+	text-align: center;
+	width: 60%;
+	margin: 0 auto;
+	display: none;
+}
+
+#d {
+	font-size: 70%;
+}
+
+#ttr th{
+	font-weight: normal;
+	border-bottom: solid 2px lightgray;
+}
+
+td, th{
+	padding: 9px;
+	text-align: left;
+}
+
+html, body{
+	width: 100%;
+	margin: 0;
+}
+
+#fcb{
+	width:40px;
+	height:40px;
+	margin-left:calc(100% - 40px);
+	border-radius:3px;
+	margin-right:0;
+	background-color:transparent;
+}
+
+#fcb:hover{
+	background-color:#dadada;
+}
+
+button{
+	border:none;
+	background-color:#c2c2c2;
+	border-radius:50%;
+	width:60px;
+	height:60px;
+	margin:9px;
+}
+
+button:enabled:hover{
+	background-color:#dadada;
+}
+
+#bta{
+	background-color:#065378;
+	color:white;
+}
+
+#bta:hover{
+	background-color:#076491;
+}
+
+p{
+	text-align:left;
+	padding:3px;
+	cursor: default;
+}
+
+p[id]:hover{
+	background-color:#dadada;
+}
+
+#tgl{
+	position:absolute;
+	top:0;
+	left:3px;
+}
+
+.sld{
+	border-left:solid 3px #065378;
+}
+
+#shezhi,#jishiqi,#naozhong,#shijieshizhong{
+	display:none;
+	position:absolute;
+	left:20%;
+}
+
+input[type="radio"]{
+	width:18px;
+	height:18px;
+}
+
+input[type="radio"]:checked{
+	appearance:none;
+	border:solid 6px #065378;
+	border-radius:50%;
+	background-color:white;
+}
+
+#miaobiao {
+	text-align: center;
+}
+
+h1, h2 {
+	font-weight: normal;
+}

@@ -1,0 +1,62 @@
+<!--计时器，闹钟，世界时钟-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>闹钟和时钟</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="tgl">
+			<p>闹钟和时钟</p>
+			<p id="jsq" onclick="sel('jsq');">计时器</p>
+			<p id="naz" onclick="sel('naz');">闹钟</p>
+			<p id="sjz" onclick="sel('sjz');">世界时钟</p>
+			<p id="mib" class="sld" onclick="sel('mib');">秒表</p>
+			<p id="set" onclick="sel('set');">设置</p>
+		</div>
+		<div id="jishiqi">
+			
+		</div>
+		<div id="naozhong">
+			
+		</div>
+		<div id="shijieshizhong">
+			<div>
+				<span id="lct"></span>
+			</div>
+		</div>
+		<div id="miaobiao">
+		<button onclick="fsc();" id="fcb">展开</button>
+		<div id="div">
+			<span id="a">00</span>:<span id="b">00</span>:<span id="c">00</span>.<span id="d">00</span>
+		</div>
+		<button onclick="da();" id="bta">开始</button>
+		<button onclick="db();" id="btb" disabled="disabled">计次</button>
+		<button onclick="dc();" id="btc" disabled="disabled">重置</button>
+		<br />
+		<table id="tbl" cellspacing="0">
+			<tr id="ttr">
+				<th>分圈计时</th>
+				<th></th>
+				<th>时间</th>
+				<th>总计</th>
+			</tr>
+		</table>
+		</div>
+		<div id="shezhi">
+			<h1>设置</h1>
+			<h2>应用程序主题</h2>
+			<form>
+				<label>
+					<input type="radio" checked="checked" name="tme" onclick="tun(true)"/>浅色
+				</label>
+				<br />
+				<label>
+					<input type="radio" name="tme" onclick="tun(false)"/>深色
+				</label>
+			</form>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
