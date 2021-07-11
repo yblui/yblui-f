@@ -1,4 +1,10 @@
-var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0;
+var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0, czs = '', val;
+var jso = {
+	'1分钟': 60000,
+	'3分钟': 180000,
+	'5分钟': 300000,
+	'10分钟': 600000
+}
 document.getElementById("lct").innerText = new Date().getHours() + ":" + new Date().getMinutes();
 document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
 
@@ -120,4 +126,38 @@ function tun(ltm) {
 	} else {
 		document.getElementsByTagName("html")[0].className = "dke"
 	}
+}
+
+function stt(sti) {
+	if (document.getElementById("j" + sti).parentNode.getElementsByTagName("button")[0].innerText == "开始") {
+		document.getElementById("j" + sti).parentNode.getElementsByTagName("button")[0].innerText = "停止";
+		var vli=document.getElementById("j"+sti).innerText.split(":");
+		var dlo=vli[0]*3600000+vli[1]*60000+vli[2]*1000;
+		var daa = new Date(), fda, sts;
+		val = setInterval(function () {
+			fda = new Date();
+			sts = (((dlo - (fda - daa)) - (dlo - (fda - daa)) % 3600000) / 3600000 + ":" + (((dlo - (fda - daa)) - (dlo - (fda - daa)) %
+				60000) / 60000) % 60 + ":" + (((dlo - (fda - daa)) - (dlo - (fda - daa)) % 1000) / 1000) % 60).split("");
+			if (sts[1] == ":") sts.splice(0, 0, "0");
+			if (sts[4] == ":") sts.splice(3, 0, "0");
+			if (sts.length == 7) sts.splice(6, 0, "0");
+			sts = sts.join("");
+			document.getElementById('j' + sti).innerText = sts
+		}, 10)
+	} else {
+		document.getElementById("j" + sti).parentNode.getElementsByTagName("button")[0].innerText = "开始"
+		val = clearInterval(val)
+	}
+}
+
+function rst(rsi) {
+	val = clearInterval(val);
+	document.getElementById("j" + rsi).innerText = (jso[rsi] - jso[rsi] % 3600000) / 3600000 + ":" + ((jso[rsi] - jso[rsi] % 60000) /
+		60000) % 60 + ":" + ((jso[rsi] - jso[rsi] % 1000) / 1000) % 60;
+	czs = document.getElementById("j" + rsi).innerText.split("");
+	if (czs[1] == ":") czs.splice(0, 0, "0");
+	if (czs[4] == ":") czs.splice(3, 0, "0");
+	if (czs.length == 7) czs.splice(6, 0, "0");
+	czs = czs.join("");
+	document.getElementById("j" + rsi).innerText = czs;
 }

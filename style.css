@@ -17,7 +17,7 @@
 	background-color: #4c4c4c;
 }
 
-.dke button:enabled:hover, .dke #fcb:hover{
+.dke button:enabled:hover, .dke #fcb:hover, .dke p:hover{
 	background-color: #353535;
 }
 
@@ -52,76 +52,82 @@ html, body{
 }
 
 #fcb{
-	width:40px;
-	height:40px;
-	margin-left:calc(100% - 40px);
-	border-radius:3px;
-	margin-right:0;
-	background-color:transparent;
+	width: 40px;
+	height: 40px;
+	margin-left: calc(100% - 40px);
+	border-radius: 3px;
+	margin-right: 0;
+	background-color: transparent;
 }
 
 #fcb:hover{
-	background-color:#dadada;
+	background-color: #dadada;
 }
 
 button{
-	border:none;
-	background-color:#c2c2c2;
-	border-radius:50%;
-	width:60px;
-	height:60px;
-	margin:9px;
+	border: none;
+	background-color: #c2c2c2;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	margin: 9px;
 }
 
 button:enabled:hover{
-	background-color:#dadada;
+	background-color: #dadada;
 }
 
 #bta{
-	background-color:#065378;
+	background-color: #065378;
 	color:white;
 }
 
 #bta:hover{
-	background-color:#076491;
+	background-color: #076491;
 }
 
 p{
-	text-align:left;
-	padding:3px;
+	text-align: left;
+	padding: 3px;
 	cursor: default;
 }
 
 p[id]:hover{
-	background-color:#dadada;
+	background-color: #dadada;
 }
 
 #tgl{
-	position:absolute;
-	top:0;
-	left:3px;
+	position: absolute;
+	top: 0;
+	left: 3px;
 }
 
 .sld{
-	border-left:solid 3px #065378;
+	border-left: solid 3px #065378;
 }
 
 #shezhi,#jishiqi,#naozhong,#shijieshizhong{
-	display:none;
-	position:absolute;
-	left:20%;
+	display: none;
+	position: absolute;
+	left: 20%;
 }
 
 input[type="radio"]{
-	width:18px;
-	height:18px;
+	width: 18px;
+	height: 18px;
 }
 
 input[type="radio"]:checked{
-	appearance:none;
-	border:solid 6px #065378;
-	border-radius:50%;
-	background-color:white;
+	appearance: none;
+	border: solid 6px #065378;
+	border-radius: 50%;
+	background-color: white;
+}
+
+input[type="text"]{
+	padding: 3px;
+	border: solid 2px gray;
+	outline: none;
 }
 
 #miaobiao {
@@ -130,4 +136,8 @@ input[type="radio"]:checked{
 
 h1, h2 {
 	font-weight: normal;
+}
+
+#add{
+	display: none;
 }
