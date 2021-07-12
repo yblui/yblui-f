@@ -77,13 +77,20 @@ button:enabled:hover{
 	background-color: #dadada;
 }
 
-#bta{
+.fan{
+	border-radius:3px;
+	width:auto;
+	height:auto;
+	padding:9px;
+}
+
+.blb{
 	background-color: #065378;
 	color:white;
 }
 
-#bta:hover{
-	background-color: #076491;
+.blb:hover{
+	background-color: #076491 !important;
 }
 
 p{
@@ -97,7 +104,7 @@ p[id]:hover{
 }
 
 #tgl{
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 3px;
 }
@@ -140,4 +147,49 @@ h1, h2 {
 
 #add{
 	display: none;
+	position:fixed;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	border-radius: 3px;
+	border: solid 2px gray;
+	margin:auto;
+	width:400px;
+	height:300px;
+	padding: 3px;
+}
+
+#add, #add h2, #add div,#add span{
+	background-color: white;
+}
+
+#opt{
+	position:fixed;
+	right:3px;
+	bottom:3px;
+}
+
+.box{
+	display:inline-block;
+	padding:9px;
+	margin:3px;
+	background-color: white;
+	border-radius: 3px;
+}
+
+.box span{
+	background-color: white;
+	font-size:30pt;
+	font-family: "Microsoft Yahei", sans-serif;
+}
+
+.cte{
+	text-align: center;
+	background-color: white;
+}
+
+#adt{
+	text-align: center;
+	font-size: 30pt;
 }

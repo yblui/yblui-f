@@ -129,24 +129,29 @@ function tun(ltm) {
 }
 
 function stt(sti) {
-	if (document.getElementById("j" + sti).parentNode.getElementsByTagName("button")[0].innerText == "开始") {
-		document.getElementById("j" + sti).parentNode.getElementsByTagName("button")[0].innerText = "停止";
-		var vli=document.getElementById("j"+sti).innerText.split(":");
-		var dlo=vli[0]*3600000+vli[1]*60000+vli[2]*1000;
+	if (document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText == "开始") {
+		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "停止";
+		var vli = document.getElementById("j" + sti).innerText.split(":");
+		var dlo = vli[0] * 3600000 + vli[1] * 60000 + vli[2] * 1000;
 		var daa = new Date(), fda, sts;
 		val = setInterval(function () {
 			fda = new Date();
+			if ((dlo - (fda - daa)) <= 0) {
+				document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "开始";
+				document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "disabled";
+				return;
+			}
 			sts = (((dlo - (fda - daa)) - (dlo - (fda - daa)) % 3600000) / 3600000 + ":" + (((dlo - (fda - daa)) - (dlo - (fda - daa)) %
 				60000) / 60000) % 60 + ":" + (((dlo - (fda - daa)) - (dlo - (fda - daa)) % 1000) / 1000) % 60).split("");
 			if (sts[1] == ":") sts.splice(0, 0, "0");
 			if (sts[4] == ":") sts.splice(3, 0, "0");
 			if (sts.length == 7) sts.splice(6, 0, "0");
 			sts = sts.join("");
-			document.getElementById('j' + sti).innerText = sts
+			document.getElementById('j' + sti).innerText = sts;
 		}, 10)
 	} else {
-		document.getElementById("j" + sti).parentNode.getElementsByTagName("button")[0].innerText = "开始"
-		val = clearInterval(val)
+		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "开始";
+		val = clearInterval(val);
 	}
 }
 
@@ -160,4 +165,27 @@ function rst(rsi) {
 	if (czs.length == 7) czs.splice(6, 0, "0");
 	czs = czs.join("");
 	document.getElementById("j" + rsi).innerText = czs;
+	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "";
+}
+
+function sve(nam, tim) {
+	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<br/><span id="j' + nam + '">' + tim + '</span><br/><button onclick="stt(\'' + nam +
+		'\')" class="blb">开始</button><button onclick="rst(\'' + nam + '\')">重置</button><button onclick="jfc(this);">展开</button></div>')
+	tim = tim.split(":");
+	jso[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
+	document.getElementById("add").style.display = "none";
+}
+
+function jfc(jft) {
+	if (jft.innerText == "展开") {
+		jft.parentNode.requestFullscreen();
+		jft.parentNode.getElementsByTagName("span")[0].style.fontSize="60pt"
+		jft.parentNode.getElementsByTagName("span")[0].style.fontWeight="100"
+		jft.innerText = "收起";
+	} else {
+		document.exitFullscreen();
+		jft.parentNode.getElementsByTagName("span")[0].style.fontSize="30pt"
+		jft.parentNode.getElementsByTagName("span")[0].style.fontWeight="500"
+		jft.innerText = "展开";
+	}
 }

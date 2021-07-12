@@ -1,4 +1,4 @@
-<!--计时器至0自动停止，取消全屏，编辑计时器，添加新计时器，闹钟，世界时钟-->
+<!--编辑计时器，添加新计时器时名不重复，同时启用多个计时器，闹钟，世界时钟-->
 <!DOCTYPE html>
 <html>
 
@@ -18,32 +18,43 @@
 		<p id="set" onclick="sel('set');">设置</p>
 	</div>
 	<div id="jishiqi">
-		<div>
-			1分钟<span id="j1分钟">00:01:00</span>
-			<button onclick="stt('1分钟')">开始</button><button onclick="rst('1分钟')">重置</button>
-			<button onclick="this.parentNode.requestFullscreen();">展开</button>
+		<div class="box">
+			1分钟
+			<div class="cte"><span id="j1分钟">00:01:00</span></div>
+			<button onclick="stt('1分钟')" class="blb">开始</button><button onclick="rst('1分钟')">重置</button>
+			<button onclick="jfc(this);">展开</button>
 		</div>
-		<div>
-			3分钟<span id="j3分钟">00:03:00</span>
-			<button onclick="stt('3分钟')">开始</button><button onclick="rst('3分钟');">重置</button>
-			<button onclick="this.parentNode.requestFullscreen();">展开</button>
+		<div class="box">
+			3分钟
+			<div class="cte"><span id="j3分钟">00:03:00</span></div>
+			<button onclick="stt('3分钟')" class="blb">开始</button><button onclick="rst('3分钟');">重置</button>
+			<button onclick="jfc(this);">展开</button>
 		</div>
-		<div>
-			5分钟<span id="j5分钟">00:05:00</span>
-			<button onclick="stt('5分钟')">开始</button><button onclick="rst('5分钟')">重置</button>
-			<button onclick="this.parentNode.requestFullscreen();">展开</button>
+		<div class="box">
+			5分钟
+			<div class="cte"><span id="j5分钟">00:05:00</span></div>
+			<button onclick="stt('5分钟')" class="blb">开始</button><button onclick="rst('5分钟')">重置</button>
+			<button onclick="jfc(this);">展开</button>
 		</div>
-		<div>
-			10分钟<span id="j10分钟">00:10:00</span>
-			<button onclick="stt('10分钟')">开始</button><button onclick="rst('10分钟')">重置</button>
-			<button onclick="this.parentNode.requestFullscreen();">展开</button>
+		<div class="box">
+			10分钟
+			<div class="cte"><span id="j10分钟">00:10:00</span></div>
+			<button onclick="stt('10分钟')" class="blb">开始</button><button onclick="rst('10分钟')">重置</button>
+			<button onclick="jfc(this);">展开</button>
 		</div>
-		<button>编辑计时器</button><button onclick="document.getElementById('add').style.display = 'block';">添加新计时器</button>
+		<div id="opt">
+		<button id="bjj" class="fan">编辑计时器</button><button onclick="document.getElementById('add').style.display = 'block';" id="tjj" class="blb fan">添加新计时器</button>
+		</div>
 		<div id="add">
 			<h2>添加新计时器</h2>
-			<span>00</span>:<span>00</span>:<span>00</span>
+			<div id="adt">
+				<span contenteditable="true">00</span>:<span contenteditable="true">00</span>:<span contenteditable="true">00</span>
+			</div>
 			<input type="text" value="计时器(1)" />
-			<button>保存</button><button onclick="document.getElementById('add').style.display = 'none';">取消</button>
+			<br />
+			<button
+				onclick="sve(document.getElementById('add').getElementsByTagName('input')[0].value, document.getElementById('adt').innerText);" class="blb fan">保存</button><button
+				onclick="document.getElementById('add').style.display = 'none';" class="fan">取消</button>
 		</div>
 	</div>
 	<div id="naozhong">
@@ -67,7 +78,7 @@
 		<div id="div">
 			<span id="a">00</span>:<span id="b">00</span>:<span id="c">00</span>.<span id="d">00</span>
 		</div>
-		<button onclick="da();" id="bta">开始</button>
+		<button onclick="da();" id="bta" class="blb">开始</button>
 		<button onclick="db();" id="btb" disabled="disabled">计次</button>
 		<button onclick="dc();" id="btc" disabled="disabled">重置</button>
 		<br />
