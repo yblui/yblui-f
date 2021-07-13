@@ -1,4 +1,4 @@
-<!--编辑计时器，添加新计时器时名不重复，同时启用多个计时器，闹钟，世界时钟-->
+<!--添加新计时器数字自动保留两位，闹钟，世界时钟-->
 <!DOCTYPE html>
 <html>
 
@@ -21,57 +21,74 @@
 		<div class="box">
 			1分钟
 			<div class="cte"><span id="j1分钟">00:01:00</span></div>
-			<button onclick="stt('1分钟')" class="blb">开始</button><button onclick="rst('1分钟')">重置</button>
-			<button onclick="jfc(this);">展开</button>
+			<div class="cte">
+				<button onclick="stt('1分钟')" class="blb">开始</button><button onclick="rst('1分钟')">重置</button>
+				<button onclick="jfc(this);">展开</button>
+			</div>
 		</div>
 		<div class="box">
 			3分钟
 			<div class="cte"><span id="j3分钟">00:03:00</span></div>
-			<button onclick="stt('3分钟')" class="blb">开始</button><button onclick="rst('3分钟');">重置</button>
-			<button onclick="jfc(this);">展开</button>
+			<div class="cte">
+				<button onclick="stt('3分钟')" class="blb">开始</button><button onclick="rst('3分钟');">重置</button>
+				<button onclick="jfc(this);">展开</button>
+			</div>
 		</div>
 		<div class="box">
 			5分钟
 			<div class="cte"><span id="j5分钟">00:05:00</span></div>
-			<button onclick="stt('5分钟')" class="blb">开始</button><button onclick="rst('5分钟')">重置</button>
-			<button onclick="jfc(this);">展开</button>
+			<div class="cte">
+				<button onclick="stt('5分钟')" class="blb">开始</button><button onclick="rst('5分钟')">重置</button>
+				<button onclick="jfc(this);">展开</button>
+			</div>
 		</div>
 		<div class="box">
 			10分钟
 			<div class="cte"><span id="j10分钟">00:10:00</span></div>
-			<button onclick="stt('10分钟')" class="blb">开始</button><button onclick="rst('10分钟')">重置</button>
-			<button onclick="jfc(this);">展开</button>
+			<div class="cte">
+				<button onclick="stt('10分钟')" class="blb">开始</button><button onclick="rst('10分钟')">重置</button>
+				<button onclick="jfc(this);">展开</button>
+			</div>
 		</div>
-		<div id="opt">
-		<button id="bjj" class="fan">编辑计时器</button><button onclick="document.getElementById('add').style.display = 'block';" id="tjj" class="blb fan">添加新计时器</button>
+		<div class="opt">
+			<button id="bjj" class="fan" onclick="edt()">编辑计时器</button><button onclick="adj();" id="tjj"
+				class="blb fan">添加新计时器</button>
 		</div>
 		<div id="add">
 			<h2>添加新计时器</h2>
 			<div id="adt">
-				<span contenteditable="true">00</span>:<span contenteditable="true">00</span>:<span contenteditable="true">00</span>
+				<span contenteditable="true">00</span>:<span contenteditable="true">00</span>:<span
+					contenteditable="true">00</span>
 			</div>
 			<input type="text" value="计时器(1)" />
 			<br />
 			<button
-				onclick="sve(document.getElementById('add').getElementsByTagName('input')[0].value, document.getElementById('adt').innerText);" class="blb fan">保存</button><button
-				onclick="document.getElementById('add').style.display = 'none';" class="fan">取消</button>
+				onclick="sve(document.getElementById('add').getElementsByTagName('input')[0].value, document.getElementById('adt').innerText);"
+				class="blb fan">保存</button><button onclick="document.getElementById('add').style.display = 'none';"
+				class="fan">取消</button>
 		</div>
 	</div>
 	<div id="naozhong">
-		<div>
-			<span>7:00</span><span></span><span>早上好</span><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><input
-				type="checkbox" name="cbx" id="cbo" />
+		<div class="box">
+			<input type="checkbox" name="cbx" id="cbo" />
+			<span>7:00</span>
+			<span></span>
+			<span>早上好</span>
+			<button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button>
 		</div>
-		<button>编辑闹钟</button><button>添加闹钟</button>
+		<div class="opt">
+			<button class="fan">编辑闹钟</button><button class="blb fan">添加闹钟</button>
+		</div>
 	</div>
 	<div id="shijieshizhong">
+		<input type="text">
 		<div>
 			<span id="lct"></span>本地时间
 			<span id="wdt"></span>
 		</div>
-		<button>比较时间</button>
-		<button>编辑</button>
-		<button>添加新城市</button>
+		<div class="opt">
+			<button class="fan">比较时间</button><button class="fan">编辑</button><button class="blb fan">添加新城市</button>
+		</div>
 	</div>
 	<div id="miaobiao">
 		<button onclick="fsc();" id="fcb">展开</button>

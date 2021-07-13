@@ -10,19 +10,27 @@
 
 .dke,.dke *{
 	background-color: #1f1f1f;
-	color: white;
+	color: white !important;
 }
 
 .dke button{
 	background-color: #4c4c4c;
 }
 
-.dke button:enabled:hover, .dke #fcb:hover, .dke p:hover{
+.dke button:enabled:hover, .dke #fcb:hover, .dke p[id]:hover{
 	background-color: #353535;
 }
 
 .dke #ttr th{
 	border-bottom: solid 2px #4c4c4c;
+}
+
+.dke .box,.dke .box .cte, .dke .box .cte span{
+	background-color: #282828;
+}
+
+.dke #add,.dke #add h2,.dke #add div,.dke #add div span{
+	background-color: #282828;
 }
 
 table {
@@ -78,15 +86,15 @@ button:enabled:hover{
 }
 
 .fan{
-	border-radius:3px;
-	width:auto;
-	height:auto;
-	padding:9px;
+	border-radius: 3px;
+	width: auto;
+	height: auto;
+	padding: 9px;
 }
 
 .blb{
-	background-color: #065378;
-	color:white;
+	background-color: #065378 !important;
+	color: white;
 }
 
 .blb:hover{
@@ -113,7 +121,7 @@ p[id]:hover{
 	border-left: solid 3px #065378;
 }
 
-#shezhi,#jishiqi,#naozhong,#shijieshizhong{
+#shezhi, #jishiqi, #naozhong, #shijieshizhong{
 	display: none;
 	position: absolute;
 	left: 20%;
@@ -147,40 +155,51 @@ h1, h2 {
 
 #add{
 	display: none;
-	position:fixed;
-	top:0;
-	left:0;
-	bottom:0;
-	right:0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 	border-radius: 3px;
 	border: solid 2px gray;
-	margin:auto;
-	width:400px;
-	height:300px;
+	margin: auto;
+	width: 350px;
+	height: 350px;
 	padding: 3px;
-}
-
-#add, #add h2, #add div,#add span{
 	background-color: white;
 }
 
-#opt{
-	position:fixed;
-	right:3px;
-	bottom:3px;
+#add h2, #add div,#add span{
+	background-color: white;
+	margin: 3px;
+}
+
+#add button{
+	width: 166px;
+	margin: 3px;
+}
+
+#add input{
+	width: 338px;
+}
+
+.opt{
+	position: fixed;
+	right: 3px;
+	bottom: 3px;
 }
 
 .box{
-	display:inline-block;
-	padding:9px;
-	margin:3px;
+	display: inline-block;
+	padding: 9px;
+	margin: 3px;
 	background-color: white;
 	border-radius: 3px;
 }
 
 .box span{
 	background-color: white;
-	font-size:30pt;
+	font-size: 30pt;
 	font-family: "Microsoft Yahei", sans-serif;
 }
 

@@ -1,10 +1,22 @@
 var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0, czs = '', val;
+var counting = {
+	'1分钟': 0,
+	'3分钟': 0,
+	'5分钟': 0,
+	'10分钟': 0
+};
 var jso = {
 	'1分钟': 60000,
 	'3分钟': 180000,
 	'5分钟': 300000,
 	'10分钟': 600000
-}
+};
+var ysj = {
+	'1分钟': 60000,
+	'3分钟': 180000,
+	'5分钟': 300000,
+	'10分钟': 600000
+};
 document.getElementById("lct").innerText = new Date().getHours() + ":" + new Date().getMinutes();
 document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
 
@@ -52,16 +64,16 @@ function da() {
 function db() {
 	tfd = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 +
 		Number(document.getElementById("c").innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
-	str = ((tfd - tfb) - (tfd - tfb) % 3600000) / 3600000 + ":" + ((((tfd - tfb) - (tfd - tfb) % 60000) / 60000) % 60) + ":" + (((((tfd - tfb) - (tfd -
-		tfb) % 1000) / 1000) % 60)) + "." + (((((tfd - tfb) - (tfd - tfb) % 10) / 10) % 100));
+	str = ((tfd - tfb) - (tfd - tfb) % 3600000) / 3600000 + ":" + ((((tfd - tfb) - (tfd - tfb) % 60000) / 60000) % 60) + ":" +
+		(((((tfd - tfb) - (tfd - tfb) % 1000) / 1000) % 60)) + "." + (((((tfd - tfb) - (tfd - tfb) % 10) / 10) % 100));
 	str = str.split("");
 	if (str[1] == ":") str.splice(0, 0, "0");
 	if (str[4] == ":") str.splice(3, 0, "0");
 	if (str[7] == ".") str.splice(6, 0, "0");
 	if (str.length == 10) str.splice(9, 0, "0");
 	str = str.join("");
-	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" + str + "</td><td>" +
-		document.getElementById("div").innerText + "</td>");
+	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" +
+		str + "</td><td>" + document.getElementById("div").innerText + "</td>");
 	sdb[sdb.length] = tfd - tfb;
 	for (var i = 0; i < sdb.length; i++) {
 		if (sdb[i] == Math.max.apply(null, sdb)) {
@@ -101,7 +113,7 @@ function fsc() {
 		bfs = false;
 		document.getElementById("div").style.fontSize = "70pt";
 	} else {
-		document.getElementsByTagName("html")[0].requestFullscreen();
+		document.getElementById("miaobiao").requestFullscreen();
 		document.getElementById("fcb").innerText = "还原";
 		document.getElementById("btb").style.display = "none";
 		document.getElementById("tbl").style.display = "none";
@@ -131,34 +143,45 @@ function tun(ltm) {
 function stt(sti) {
 	if (document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText == "开始") {
 		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "停止";
+		counting[sti] = new Date();
 		var vli = document.getElementById("j" + sti).innerText.split(":");
 		var dlo = vli[0] * 3600000 + vli[1] * 60000 + vli[2] * 1000;
-		var daa = new Date(), fda, sts;
-		val = setInterval(function () {
-			fda = new Date();
-			if ((dlo - (fda - daa)) <= 0) {
-				document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "开始";
-				document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "disabled";
-				return;
-			}
-			sts = (((dlo - (fda - daa)) - (dlo - (fda - daa)) % 3600000) / 3600000 + ":" + (((dlo - (fda - daa)) - (dlo - (fda - daa)) %
-				60000) / 60000) % 60 + ":" + (((dlo - (fda - daa)) - (dlo - (fda - daa)) % 1000) / 1000) % 60).split("");
-			if (sts[1] == ":") sts.splice(0, 0, "0");
-			if (sts[4] == ":") sts.splice(3, 0, "0");
-			if (sts.length == 7) sts.splice(6, 0, "0");
-			sts = sts.join("");
-			document.getElementById('j' + sti).innerText = sts;
-		}, 10)
+		jso[sti] = dlo;
+		var fda, sts;
+		if (!val) {
+			val = setInterval(function () {
+				for (var i in counting) {
+					if (counting[i] != 0) {
+						fda = new Date();
+						if ((jso[i] - (fda - counting[i])) <= 0) {
+							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "开始";
+							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].disabled =
+								"disabled";
+							counting[i] = 0;
+							return;
+						}
+						var tmp=jso[i] - (fda - counting[i]);
+						sts = ((tmp - tmp % 3600000) / 3600000 + ":" + ((tmp - tmp % 60000) / 60000) % 60 + ":" + ((tmp - tmp %
+							1000) / 1000) % 60).split("");
+						if (sts[1] == ":") sts.splice(0, 0, "0");
+						if (sts[4] == ":") sts.splice(3, 0, "0");
+						if (sts.length == 7) sts.splice(6, 0, "0");
+						sts = sts.join("");
+						document.getElementById('j' + i).innerText = sts;
+					}
+				}
+			}, 10)
+		}
 	} else {
 		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "开始";
-		val = clearInterval(val);
+		counting[sti] = 0;
 	}
 }
 
 function rst(rsi) {
 	val = clearInterval(val);
-	document.getElementById("j" + rsi).innerText = (jso[rsi] - jso[rsi] % 3600000) / 3600000 + ":" + ((jso[rsi] - jso[rsi] % 60000) /
-		60000) % 60 + ":" + ((jso[rsi] - jso[rsi] % 1000) / 1000) % 60;
+	document.getElementById("j" + rsi).innerText = (ysj[rsi] - ysj[rsi] % 3600000) / 3600000 + ":" + ((ysj[rsi] - ysj[rsi] % 60000) /
+		60000) % 60 + ":" + ((ysj[rsi] - ysj[rsi] % 1000) / 1000) % 60;
 	czs = document.getElementById("j" + rsi).innerText.split("");
 	if (czs[1] == ":") czs.splice(0, 0, "0");
 	if (czs[4] == ":") czs.splice(3, 0, "0");
@@ -169,23 +192,49 @@ function rst(rsi) {
 }
 
 function sve(nam, tim) {
-	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<br/><span id="j' + nam + '">' + tim + '</span><br/><button onclick="stt(\'' + nam +
-		'\')" class="blb">开始</button><button onclick="rst(\'' + nam + '\')">重置</button><button onclick="jfc(this);">展开</button></div>')
+	if (!isNaN(jso[nam])) return;
+	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<div class="cte"><span id="j' + nam + '">' + tim +
+		'</span></div><button onclick="stt(\'' + nam + '\')" class="blb">开始</button><button onclick="rst(\'' + nam +
+		'\')">重置</button><button onclick="jfc(this);">展开</button></div>')
 	tim = tim.split(":");
 	jso[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
+	ysj[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
 	document.getElementById("add").style.display = "none";
 }
 
 function jfc(jft) {
 	if (jft.innerText == "展开") {
-		jft.parentNode.requestFullscreen();
-		jft.parentNode.getElementsByTagName("span")[0].style.fontSize="60pt"
-		jft.parentNode.getElementsByTagName("span")[0].style.fontWeight="100"
+		jft.parentNode.parentNode.requestFullscreen();
+		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontSize = "60pt";
+		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontWeight = "100";
 		jft.innerText = "收起";
-	} else {
+	} else if (jft.innerText == "收起") {
 		document.exitFullscreen();
-		jft.parentNode.getElementsByTagName("span")[0].style.fontSize="30pt"
-		jft.parentNode.getElementsByTagName("span")[0].style.fontWeight="500"
+		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontSize = "30pt";
+		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontWeight = "500";
 		jft.innerText = "展开";
+	} else {
+		document.getElementById("jishiqi").removeChild(jft.parentNode);
+		jso[jft.parentNode.parentNode.getElementsByTagName("span")[0].id.replace("j", "")] = null;
+	}
+}
+
+function edt() {
+	for (var x = 0; x < document.getElementsByClassName("box").length; x++) {
+		document.getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "删除";
+		document.getElementById("bjj").style.display = "none";
+		document.getElementById("tjj").innerText = "完成";
+	}
+}
+
+function adj() {
+	if (document.getElementById("tjj").innerText == "添加新计时器") {
+		document.getElementById('add').style.display = 'block';
+	} else {
+		for (var x = 0; x < document.getElementsByClassName("box").length; x++) {
+			document.getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "展开";
+		}
+		document.getElementById("bjj").style.display = "inline";
+		document.getElementById("tjj").innerText = "添加新计时器";
 	}
 }
