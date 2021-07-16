@@ -160,7 +160,7 @@ function stt(sti) {
 							counting[i] = 0;
 							return;
 						}
-						var tmp=jso[i] - (fda - counting[i]);
+						var tmp = jso[i] - (fda - counting[i]);
 						sts = ((tmp - tmp % 3600000) / 3600000 + ":" + ((tmp - tmp % 60000) / 60000) % 60 + ":" + ((tmp - tmp %
 							1000) / 1000) % 60).split("");
 						if (sts[1] == ":") sts.splice(0, 0, "0");
@@ -193,9 +193,12 @@ function rst(rsi) {
 
 function sve(nam, tim) {
 	if (!isNaN(jso[nam])) return;
+	tim = tim.split(":");
+	if (tim[0].length != 2 || tim[1].length != 2 || tim[2].length != 2) return;
+	tim = tim.join(":");
 	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<div class="cte"><span id="j' + nam + '">' + tim +
-		'</span></div><button onclick="stt(\'' + nam + '\')" class="blb">开始</button><button onclick="rst(\'' + nam +
-		'\')">重置</button><button onclick="jfc(this);">展开</button></div>')
+		'</span></div><div class="cte"><button onclick="stt(\'' + nam + '\')" class="blb">开始</button><button onclick="rst(\'' + nam +
+		'\')">重置</button><button onclick="jfc(this);">展开</button></div>');
 	tim = tim.split(":");
 	jso[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
 	ysj[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
@@ -237,4 +240,8 @@ function adj() {
 		document.getElementById("bjj").style.display = "inline";
 		document.getElementById("tjj").innerText = "添加新计时器";
 	}
+}
+
+function tjn(){
+	document.getElementById('xnz').style.display = 'block';
 }

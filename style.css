@@ -153,7 +153,7 @@ h1, h2 {
 	font-weight: normal;
 }
 
-#add{
+.dlg{
 	display: none;
 	position: fixed;
 	top: 0;
@@ -169,17 +169,17 @@ h1, h2 {
 	background-color: white;
 }
 
-#add h2, #add div,#add span{
+.dlg h2, .dlg div,.dlg span{
 	background-color: white;
 	margin: 3px;
 }
 
-#add button{
+.dlg .fan{
 	width: 166px;
 	margin: 3px;
 }
 
-#add input{
+.dlg input[type="text"]{
 	width: 338px;
 }
 
@@ -187,6 +187,7 @@ h1, h2 {
 	position: fixed;
 	right: 3px;
 	bottom: 3px;
+	background-color: transparent;
 }
 
 .box{
@@ -208,7 +209,11 @@ h1, h2 {
 	background-color: white;
 }
 
-#adt{
+.etm{
 	text-align: center;
 	font-size: 30pt;
+}
+
+#epl{
+	display: none;
 }

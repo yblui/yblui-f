@@ -1,4 +1,4 @@
-<!--添加新计时器数字自动保留两位，闹钟，世界时钟-->
+<!--闹钟，世界时钟-->
 <!DOCTYPE html>
 <html>
 
@@ -54,9 +54,9 @@
 			<button id="bjj" class="fan" onclick="edt()">编辑计时器</button><button onclick="adj();" id="tjj"
 				class="blb fan">添加新计时器</button>
 		</div>
-		<div id="add">
+		<div id="add" class="dlg">
 			<h2>添加新计时器</h2>
-			<div id="adt">
+			<div id="adt" class="etm">
 				<span contenteditable="true">00</span>:<span contenteditable="true">00</span>:<span
 					contenteditable="true">00</span>
 			</div>
@@ -73,15 +73,29 @@
 			<input type="checkbox" name="cbx" id="cbo" />
 			<span>7:00</span>
 			<span></span>
+			<br />
 			<span>早上好</span>
+			<br />
 			<button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button>
 		</div>
 		<div class="opt">
-			<button class="fan">编辑闹钟</button><button class="blb fan">添加闹钟</button>
+			<button class="fan">编辑闹钟</button><button class="blb fan" onclick="tjn();">添加闹钟</button>
+		</div>
+		<div class="dlg" id="xnz">
+			<h2>添加新闹钟</h2>
+			<div class="etm">
+				<span contenteditable="true">07</span>:<span contenteditable="true">00</span>
+			</div>
+			<input type="text" value="闹钟(1)" />
+			<label><input type="checkbox" />重复闹钟</label>
+			<br/>
+			<button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button>
+			<button class="blb fan">保存</button><button class="fan"
+				onclick="document.getElementById('xnz').style.display = 'none';">取消</button>
 		</div>
 	</div>
 	<div id="shijieshizhong">
-		<input type="text">
+		<input type="text" placeholder="输入地点" id="epl" />
 		<div>
 			<span id="lct"></span>本地时间
 			<span id="wdt"></span>
