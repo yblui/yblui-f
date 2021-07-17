@@ -6,6 +6,7 @@
 * {
 	font-family: "Microsoft Yahei", sans-serif;
 	background-color: #f2f2f2;
+	transition:100ms;
 }
 
 .dke,.dke *{
@@ -25,12 +26,12 @@
 	border-bottom: solid 2px #4c4c4c;
 }
 
-.dke .box,.dke .box .cte, .dke .box .cte span{
+.dke .box,.dke .box .cte, .dke .box .cte span, .dke .box .lte, .dke .box .lte span, .dke .dlg, .dke .dlg h2,.dke .dlg div, .dke .dlg div span, .dke .sma, .dke .dlg label{
 	background-color: #282828;
 }
 
-.dke #add,.dke #add h2,.dke #add div,.dke #add div span{
-	background-color: #282828;
+.dke .box{
+	box-shadow:0px 0px 9px black;
 }
 
 table {
@@ -169,7 +170,7 @@ h1, h2 {
 	background-color: white;
 }
 
-.dlg h2, .dlg div,.dlg span{
+.dlg h2, .dlg div,.dlg span, .dlg label{
 	background-color: white;
 	margin: 3px;
 }
@@ -194,11 +195,15 @@ h1, h2 {
 	display: inline-block;
 	padding: 9px;
 	margin: 3px;
-	background-color: white;
 	border-radius: 3px;
+	box-shadow:0px 0px 9px lightgray;
 }
 
-.box span{
+.box, .box .lte, .cte, .sma{
+	background-color: white;
+}
+
+.box .lte span,.box .cte span{
 	background-color: white;
 	font-size: 30pt;
 	font-family: "Microsoft Yahei", sans-serif;
@@ -206,7 +211,6 @@ h1, h2 {
 
 .cte{
 	text-align: center;
-	background-color: white;
 }
 
 .etm{
@@ -216,4 +220,10 @@ h1, h2 {
 
 #epl{
 	display: none;
+}
+
+.sma button{
+	width: 30px;
+	height: 30px;
+	border: solid 3px gray;
 }

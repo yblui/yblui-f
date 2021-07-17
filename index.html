@@ -1,4 +1,4 @@
-<!--闹钟，世界时钟-->
+<!--重置时停止改开始，闹钟，世界时钟-->
 <!DOCTYPE html>
 <html>
 
@@ -70,13 +70,16 @@
 	</div>
 	<div id="naozhong">
 		<div class="box">
-			<input type="checkbox" name="cbx" id="cbo" />
-			<span>7:00</span>
-			<span></span>
-			<br />
-			<span>早上好</span>
-			<br />
-			<button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button>
+			<div class="lte">
+				<input type="checkbox" name="cbx" />
+				<span>7:00</span>
+				<span></span>
+				<br />
+				<span>早上好</span>
+				<div class="sma">
+					<button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button>
+				</div>
+			</div>
 		</div>
 		<div class="opt">
 			<button class="fan">编辑闹钟</button><button class="blb fan" onclick="tjn();">添加闹钟</button>
@@ -88,16 +91,30 @@
 			</div>
 			<input type="text" value="闹钟(1)" />
 			<label><input type="checkbox" />重复闹钟</label>
-			<br/>
-			<button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button>
-			<button class="blb fan">保存</button><button class="fan"
-				onclick="document.getElementById('xnz').style.display = 'none';">取消</button>
+			<br />
+			<div class="sma">
+				<button onclick="ccl(this)">日</button><button onclick="ccl(this)">一</button><button
+					onclick="ccl(this)">二</button><button onclick="ccl(this)">三
+				</button><button onclick="ccl(this)">四</button><button onclick="ccl(this)">五</button><button
+					onclick="ccl(this)">六</button>
+			</div>
+			<button class="blb fan"
+				onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this.parentNode
+				.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor=='#065378',this.parentNode.getElementsByClassName('sma')[0]
+				.getElementsByTagName('button')[1].style.borderColor=='#065378',this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[2]
+				.style.borderColor=='#065378',this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[3].style.borderColor=='#065378',this
+				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[4].style.borderColor=='#065378',this.parentNode
+				.getElementsByClassName('sma')[0].getElementsByTagName('button')[5].style.borderColor=='#065378',this.parentNode.getElementsByClassName('sma')[0]
+				.getElementsByTagName('button')[6].style.borderColor=='#065378');">保存</button>
+				<button class="fan" onclick="document.getElementById('xnz').style.display = 'none';">取消</button>
 		</div>
 	</div>
 	<div id="shijieshizhong">
 		<input type="text" placeholder="输入地点" id="epl" />
 		<div>
-			<span id="lct"></span>本地时间
+			<span id="lct"></span>
+			<b>本地时间</b>
+			<br />
 			<span id="wdt"></span>
 		</div>
 		<div class="opt">

@@ -242,6 +242,20 @@ function adj() {
 	}
 }
 
-function tjn(){
+function tjn() {
 	document.getElementById('xnz').style.display = 'block';
+}
+
+function bcn(tme, nme, a, b, c, d, e, f) {
+	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" name="cbx" checked="checked"/><span>' + tme + '</span><span></span><br /><span>' +
+		nme + '</span><div class="sma"><button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button></div></div></div>')
+	document.getElementById("xnz").style.display = "none";
+}
+
+function ccl(cle) {
+	if (cle.style.borderColor == "" || cle.style.borderColor == "gray") {
+		cle.style.borderColor = "#065378";
+	} else {
+		cle.style.borderColor = "gray";
+	}
 }
