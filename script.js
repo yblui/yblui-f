@@ -17,8 +17,10 @@ var ysj = {
 	'5分钟': 300000,
 	'10分钟': 600000
 };
-document.getElementById("lct").innerText = new Date().getHours() + ":" + new Date().getMinutes();
-document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
+setInterval(function () {
+	document.getElementById("lct").innerText = new Date().getHours() + ":" + new Date().getMinutes();
+	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
+}, 10);
 
 function da() {
 	if (!std) {
@@ -223,8 +225,8 @@ function jfc(jft) {
 }
 
 function edt() {
-	for (var x = 0; x < document.getElementsByClassName("box").length; x++) {
-		document.getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "删除";
+	for (var x = 0; x < document.getElementById("jishiqi").getElementsByClassName("box").length; x++) {
+		document.getElementById("jishiqi").getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "删除";
 		document.getElementById("bjj").style.display = "none";
 		document.getElementById("tjj").innerText = "完成";
 	}
@@ -234,8 +236,8 @@ function adj() {
 	if (document.getElementById("tjj").innerText == "添加新计时器") {
 		document.getElementById('add').style.display = 'block';
 	} else {
-		for (var x = 0; x < document.getElementsByClassName("box").length; x++) {
-			document.getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "展开";
+		for (var x = 0; x < document.getElementById("jishiqi").getElementsByClassName("box").length; x++) {
+			document.getElementById("jishiqi").getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "展开";
 		}
 		document.getElementById("bjj").style.display = "inline";
 		document.getElementById("tjj").innerText = "添加新计时器";
@@ -243,12 +245,24 @@ function adj() {
 }
 
 function tjn() {
-	document.getElementById('xnz').style.display = 'block';
+	if (document.getElementById("nzf").innerText == "添加闹钟") {
+		document.getElementById('xnz').style.display = 'block';
+	} else {
+		for (var x = 0; x < document.getElementsByClassName("ltb").length; x++) {
+			document.getElementsByClassName("cbx")[x].style.display = "inline";
+			document.getElementsByClassName("ltb")[x].style.display = "none";
+		}
+		document.getElementById("nzf").innerText = "添加闹钟";
+		document.getElementById("nze").style.display = "inline";
+	}
 }
 
-function bcn(tme, nme, a, b, c, d, e, f) {
-	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" name="cbx" checked="checked"/><span>' + tme + '</span><span></span><br /><span>' +
-		nme + '</span><div class="sma"><button>日</button><button>一</button><button>二</button><button>三</button><button>四</button><button>五</button><button>六</button></div></div></div>')
+function bcn(tme, nme, a, b, c, d, e, f, g) {
+	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" name="cbx" checked="checked"/><button onclick="dbx(this\
+		.parentNode.parentNode)">删除</button><br /><span>' + tme + '</span><span></span><br /><span>' + nme + '</span><div class="sma"><button style="border-color:' +
+		a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c + '">二</button><button style="border-color:' + d +
+		'">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f + '">五</button><button style="border-color:' + g +
+		'">六</button></div></div></div>')
 	document.getElementById("xnz").style.display = "none";
 }
 
@@ -258,4 +272,27 @@ function ccl(cle) {
 	} else {
 		cle.style.borderColor = "gray";
 	}
+}
+
+function dbx(dbs) {
+	dbs.parentNode.removeChild(dbs);
+}
+
+function ted() {
+	for (var x = 0; x < document.getElementsByClassName("ltb").length; x++) {
+		document.getElementsByClassName("cbx")[x].style.display = "none";
+		document.getElementsByClassName("ltb")[x].style.display = "inline";
+	}
+	document.getElementById("nze").style.display = "none";
+	document.getElementById("nzf").innerText = "完成";
+}
+
+function adc() {
+	document.getElementById("epl").style.display = "block";
+}
+
+function hdt() {
+	document.getElementById("cpr").style.display = "none";
+	document.getElementById("ced").style.display = "none";
+	document.getElementById("cac").innerText = "完成";
 }

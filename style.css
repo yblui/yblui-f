@@ -6,32 +6,34 @@
 * {
 	font-family: "Microsoft Yahei", sans-serif;
 	background-color: #f2f2f2;
-	transition:100ms;
+	transition: 100ms;
+	user-select: none;
 }
 
-.dke,.dke *{
+.dke,.dke * {
 	background-color: #1f1f1f;
 	color: white !important;
 }
 
-.dke button{
+.dke button {
 	background-color: #4c4c4c;
 }
 
-.dke button:enabled:hover, .dke #fcb:hover, .dke p[id]:hover{
+.dke button:enabled:hover, .dke #fcb:hover, .dke p[id]:hover {
 	background-color: #353535;
 }
 
-.dke #ttr th{
+.dke #ttr th {
 	border-bottom: solid 2px #4c4c4c;
 }
 
-.dke .box,.dke .box .cte, .dke .box .cte span, .dke .box .lte, .dke .box .lte span, .dke .dlg, .dke .dlg h2,.dke .dlg div, .dke .dlg div span, .dke .sma, .dke .dlg label{
+.dke .box, .dke .box .cte, .dke .box .cte span, .dke .box .lte, .dke .box .lte span, .dke .dlg, .dke .dlg h2, .dke .dlg div, .dke .dlg div span, .dke .sma,
+.dke .dlg label, .dke .box b, .dke .box #lct, .dke .box #wdt {
 	background-color: #282828;
 }
 
-.dke .box{
-	box-shadow:0px 0px 9px black;
+.dke .box {
+	box-shadow: 0px 0px 9px black;
 }
 
 table {
@@ -45,22 +47,22 @@ table {
 	font-size: 70%;
 }
 
-#ttr th{
+#ttr th {
 	font-weight: normal;
 	border-bottom: solid 2px lightgray;
 }
 
-td, th{
+td, th {
 	padding: 9px;
 	text-align: left;
 }
 
-html, body{
+html, body {
 	width: 100%;
 	margin: 0;
 }
 
-#fcb{
+#fcb {
 	width: 40px;
 	height: 40px;
 	margin-left: calc(100% - 40px);
@@ -69,11 +71,11 @@ html, body{
 	background-color: transparent;
 }
 
-#fcb:hover{
+#fcb:hover {
 	background-color: #dadada;
 }
 
-button{
+button {
 	border: none;
 	background-color: #c2c2c2;
 	border-radius: 50%;
@@ -82,65 +84,65 @@ button{
 	margin: 9px;
 }
 
-button:enabled:hover{
+button:enabled:hover {
 	background-color: #dadada;
 }
 
-.fan{
+.fan {
 	border-radius: 3px;
 	width: auto;
 	height: auto;
 	padding: 9px;
 }
 
-.blb{
+.blb {
 	background-color: #065378 !important;
 	color: white;
 }
 
-.blb:hover{
+.blb:hover {
 	background-color: #076491 !important;
 }
 
-p{
+p {
 	text-align: left;
-	padding: 3px;
+	padding: 9px;
 	cursor: default;
 }
 
-p[id]:hover{
+p[id]:hover {
 	background-color: #dadada;
 }
 
-#tgl{
+#tgl {
 	position: fixed;
 	top: 0;
 	left: 3px;
 }
 
-.sld{
+.sld {
 	border-left: solid 3px #065378;
 }
 
-#shezhi, #jishiqi, #naozhong, #shijieshizhong{
+#shezhi, #jishiqi, #naozhong, #shijieshizhong {
 	display: none;
 	position: absolute;
 	left: 20%;
 }
 
-input[type="radio"]{
+input[type="radio"] {
 	width: 18px;
 	height: 18px;
 }
 
-input[type="radio"]:checked{
+input[type="radio"]:checked {
 	appearance: none;
 	border: solid 6px #065378;
 	border-radius: 50%;
 	background-color: white;
 }
 
-input[type="text"]{
+input[type="text"] {
 	padding: 3px;
 	border: solid 2px gray;
 	outline: none;
@@ -154,7 +156,7 @@ h1, h2 {
 	font-weight: normal;
 }
 
-.dlg{
+.dlg {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -170,28 +172,28 @@ h1, h2 {
 	background-color: white;
 }
 
-.dlg h2, .dlg div,.dlg span, .dlg label{
+.dlg h2, .dlg div, .dlg span, .dlg label {
 	background-color: white;
 	margin: 3px;
 }
 
-.dlg .fan{
+.dlg .fan {
 	width: 166px;
 	margin: 3px;
 }
 
-.dlg input[type="text"]{
+.dlg input[type="text"] {
 	width: 338px;
 }
 
-.opt{
+.opt {
 	position: fixed;
 	right: 3px;
 	bottom: 3px;
 	background-color: transparent;
 }
 
-.box{
+.box {
 	display: inline-block;
 	padding: 9px;
 	margin: 3px;
@@ -199,31 +201,44 @@ h1, h2 {
 	box-shadow:0px 0px 9px lightgray;
 }
 
-.box, .box .lte, .cte, .sma{
+.box, .box .lte, .cte, .sma, .box b, .box #lct, .box #wdt {
 	background-color: white;
 }
 
-.box .lte span,.box .cte span{
+.box .lte span,.box .cte span {
 	background-color: white;
 	font-size: 30pt;
 	font-family: "Microsoft Yahei", sans-serif;
 }
 
-.cte{
+.cte {
 	text-align: center;
 }
 
-.etm{
+.etm {
 	text-align: center;
 	font-size: 30pt;
 }
 
-#epl{
+#epl {
 	display: none;
 }
 
-.sma button{
+.sma button {
 	width: 30px;
 	height: 30px;
 	border: solid 3px gray;
+}
+
+.lte button[onclick] {
+	display: none;
+}
+
+.tmd {
+	font-size: 45pt!important;
+	font-weight: 100;
+}
+
+.hel {
+	font-size: 18pt!important;
 }
