@@ -17,8 +17,18 @@ var ysj = {
 	'5分钟': 300000,
 	'10分钟': 600000
 };
+var cities = [
+	"阿比让，科特迪瓦", "阿伯丁，苏格兰", "阿布贾，尼日利亚", "阿布扎比，阿拉伯联合酋长国"
+];
+var dif = [
+	-8, -7, -7, -4
+];
 setInterval(function () {
-	document.getElementById("lct").innerText = new Date().getHours() + ":" + new Date().getMinutes();
+	var a = new Date().getHours();
+	var b = new Date().getMinutes();
+	if (a.length == 1) a = "0" + a;
+	if (b.length == 1) b = "0" + b;
+	document.getElementById("lct").innerText = a + ":" + b;
 	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
 }, 10);
 
@@ -258,8 +268,8 @@ function tjn() {
 }
 
 function bcn(tme, nme, a, b, c, d, e, f, g) {
-	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" name="cbx" checked="checked"/><button onclick="dbx(this\
-		.parentNode.parentNode)">删除</button><br /><span>' + tme + '</span><span></span><br /><span>' + nme + '</span><div class="sma"><button style="border-color:' +
+	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" class="cbx" checked="checked"/><button onclick="dbx(this\
+		.parentNode.parentNode)" class="ltb fan">删除</button><br /><span class="tmd">' + tme + '</span><span></span><br /><span class="hel">' + nme + '</span><div class="sma"><button style="border-color:' +
 		a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c + '">二</button><button style="border-color:' + d +
 		'">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f + '">五</button><button style="border-color:' + g +
 		'">六</button></div></div></div>')
@@ -288,11 +298,25 @@ function ted() {
 }
 
 function adc() {
-	document.getElementById("epl").style.display = "block";
+	document.getElementById("search").style.display = "block";
 }
 
 function hdt() {
 	document.getElementById("cpr").style.display = "none";
 	document.getElementById("ced").style.display = "none";
 	document.getElementById("cac").innerText = "完成";
+}
+
+function srh(srt) {
+	document.getElementById("blx").innerHTML = "";
+	if (srt != "") {
+		for (var x = 0; x < cities.length; x++) {
+			if (cities[x].indexOf(srt) != -1) document.getElementById("blx").innerHTML += ("<span onclick='aci(" + x + ")'>" + cities[x] + "</span><br/>");
+		}
+	}
+}
+
+function aci(act) {
+	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg"><span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span>\
+		</div></div>';
 }
