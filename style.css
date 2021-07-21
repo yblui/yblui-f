@@ -10,7 +10,7 @@
 	user-select: none;
 }
 
-.dke,.dke * {
+.dke,.dke *,.dke input[type="text"] {
 	background-color: #1f1f1f;
 	color: white !important;
 }
@@ -28,7 +28,7 @@
 }
 
 .dke .box, .dke .box .cte, .dke .box .cte span, .dke .box .lte, .dke .box .lte span, .dke .dlg, .dke .dlg h2, .dke .dlg div, .dke .dlg div span, .dke .sma,
-.dke .dlg label, .dke .box b, .dke .box .fsj, .dke .box .rqj {
+.dke .dlg label, .dke .box b, .dke .box .fsj, .dke .box .rqj, .dke .ilk {
 	background-color: #282828;
 }
 
@@ -127,13 +127,13 @@ p[id]:hover {
 #shezhi, #jishiqi, #naozhong, #shijieshizhong {
 	display: none;
 	position: absolute;
-	left: 20%;
-	width: 80%;
+	left: 15%;
+	width: 85%;
 }
 
 #miaobiao{
 	position: absolute;
-	left: 60%;
+	left: 57.5%;
 	transform: translateX(-50%) translateY(-50%);
 	top:34%;
 }
@@ -154,6 +154,7 @@ input[type="text"] {
 	padding: 3px;
 	border: solid 2px gray;
 	outline: none;
+	background-color:white;
 }
 
 #miaobiao {
@@ -209,7 +210,7 @@ h1, h2 {
 	box-shadow:0px 0px 9px lightgray;
 }
 
-.box, .box .lte, .cte, .sma, .box b, .box #lct, .box #wdt {
+.box, .box .lte, .cte, .sma, .box b, .box .fsj, .box .rqj {
 	background-color: white;
 }
 
@@ -266,4 +267,16 @@ h1, h2 {
 
 .ilk, .fsj{
 	display: inline-block;
+}
+
+select{
+	width: 200px;
+	padding: 6px;
+	border-radius: 0;
+	border: solid 1px gray;
+}
+
+#epl {
+	width: 500px;
+	border:solid 3px #065378;
 }

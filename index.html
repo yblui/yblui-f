@@ -96,7 +96,7 @@
 			</div>
 			<input type="text" value="闹钟(1)" />
 			<label>
-				<input type="checkbox" />重复闹钟
+				<input type="checkbox" id="cfn" />重复闹钟
 			</label>
 			<br />
 			<div class="sma">
@@ -105,6 +105,15 @@
 				</button><button onclick="ccl(this)">四</button><button onclick="ccl(this)">五</button><button
 					onclick="ccl(this)">六</button>
 			</div>
+			暂停时间 <select>
+				<option>已禁用</option>
+				<option>5分钟</option>
+				<option>10分钟</option>
+				<option>20分钟</option>
+				<option>30分钟</option>
+				<option>1小时</option>
+			</select>
+			<br/>
 			<button class="blb fan" onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this.parentNode
 				.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
 				.getElementsByTagName('button')[1].style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[2]
@@ -116,7 +125,7 @@
 		</div>
 	</div>
 	<div id="shijieshizhong">
-		<div id="search">
+		<div id="search" onblur="qut()">
 			<input type="text" placeholder="输入地点" id="epl" onkeyup="srh(this.value)" />
 			<div id="blx"></div>
 		</div>

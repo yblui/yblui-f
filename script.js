@@ -18,18 +18,31 @@ var ysj = {
 	'10分钟': 600000
 };
 var cities = [
-	"阿比让，科特迪瓦", "阿伯丁，苏格兰", "阿布贾，尼日利亚", "阿布扎比，阿拉伯联合酋长国"
+	"北京，中国", "成都，中国", "大理，中国", "大连，中国", "广州，中国", "哈尔滨，中国", "杭州，中国", "拉萨，中国", "南京，中国", "青岛，中国", "厦门，中国", "上海，中国",
+	"深圳，中国", "沈阳，中国", "苏州，中国", "阿尔伯克基，新墨西哥州，美国", "阿卡迪亚，加利福尼亚州，美国", "阿克伦，俄亥俄州，美国", "阿灵顿，弗吉尼亚州，美国", "阿伦敦，宾夕法尼亚州，美国",
+	"阿马里洛，得克萨斯州，美国", "阿纳海姆，加利福尼亚州，美国", "阿普尔顿，威斯康星州，美国", "埃尔帕索，得克萨斯州，美国"
 ];
+var oct = [];
 var dif = [
-	-8, -7, -7, -4
+	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6
 ];
 setInterval(function () {
 	var a = new Date().getHours();
 	var b = new Date().getMinutes();
-	if (a.length == 1) a = "0" + a;
-	if (b.length == 1) b = "0" + b;
-	document.getElementById("lct").innerText = a + ":" + b;
-	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + new Date().getMonth() + "/" + new Date().getDate();
+	var c = a, d = b;
+	if (a.length == 1) c = "0" + a;
+	if (b.length == 1) d = "0" + b;
+	document.getElementById("lct").innerText = c + ":" + d;
+	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
+	for (x = 0; x < oct.length; x++) {
+		if (a.length == 1) c = "0" + a;
+		if (b.length == 1) d = "0" + b;
+		var i = Number(new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), a, b, 0, 0)) + 3600000 * (dif[oct[x]] + new Date()
+			.getTimezoneOffset() / 60);
+		document.getElementById("city" + oct[x]).getElementsByClassName("fsj")[0].innerText = new Date(i).getHours() + ":" + new Date(i).getMinutes();
+		document.getElementById("city" + oct[x]).getElementsByClassName("rqj")[0].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
+			.getDate() + ", " + (dif[oct[x]] + new Date().getTimezoneOffset() / 60) + "小时";
+	}
 }, 10);
 
 function da() {
@@ -268,8 +281,11 @@ function tjn() {
 }
 
 function bcn(tme, nme, a, b, c, d, e, f, g) {
+	var a = tme.split(":");
+	a[0] = Number(a[0]).toString();
+	a = a.join(":");
 	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" class="cbx" checked="checked"/><button onclick="dbx(this\
-		.parentNode.parentNode)" class="ltb fan">删除</button><br /><span class="tmd">' + tme + '</span><span></span><br /><span class="hel">' + nme + '</span><div class="sma"><button style="border-color:' +
+		.parentNode.parentNode)" class="ltb fan">删除</button><br /><span class="tmd">' + a + '</span><span></span><br /><span class="hel">' + nme + '</span><div class="sma"><button style="border-color:' +
 		a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c + '">二</button><button style="border-color:' + d +
 		'">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f + '">五</button><button style="border-color:' + g +
 		'">六</button></div></div></div>')
@@ -279,8 +295,13 @@ function bcn(tme, nme, a, b, c, d, e, f, g) {
 function ccl(cle) {
 	if (cle.style.borderColor == "" || cle.style.borderColor == "gray") {
 		cle.style.borderColor = "#065378";
+		document.getElementById("cfn").checked = "checked";
 	} else {
 		cle.style.borderColor = "gray";
+		for (var x = 0; x < document.getElementsByClassName("sma")[1].getElementsByTagName("button").length; x++) {
+			if (document.getElementsByClassName("sma")[1].getElementsByTagName("button")[x].style.borderColor != "gray" && document.getElementsByClassName("sma")[1].getElementsByTagName("button")[x].style.borderColor != "") return;
+		}
+		document.getElementById("cfn").checked = "";
 	}
 }
 
@@ -317,6 +338,11 @@ function srh(srt) {
 }
 
 function aci(act) {
-	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg"><span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span>\
+	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span>\
 		</div></div>';
+	oct[oct.length] = act;
+}
+
+function qut() {
+	document.getElementById("search").style.display = "none";
 }
