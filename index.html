@@ -1,4 +1,4 @@
-<!--重置时停止改开始，闹钟，世界时钟-->
+<!--重置时停止改开始，暂停时间，闹钟，世界时钟-->
 <!DOCTYPE html>
 <html>
 
@@ -75,7 +75,6 @@
 			<div class="lte">
 				<input type="checkbox" class="cbx" />
 				<button onclick="dbx(this.parentNode.parentNode)" class="ltb fan">删除</button>
-				<br />
 				<span class="tmd">7:00</span>
 				<span></span>
 				<br />
@@ -113,7 +112,7 @@
 				<option>30分钟</option>
 				<option>1小时</option>
 			</select>
-			<br/>
+			<br />
 			<button class="blb fan" onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this.parentNode
 				.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
 				.getElementsByTagName('button')[1].style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[2]
@@ -125,7 +124,7 @@
 		</div>
 	</div>
 	<div id="shijieshizhong">
-		<div id="search" onblur="qut()">
+		<div id="search">
 			<input type="text" placeholder="输入地点" id="epl" onkeyup="srh(this.value)" />
 			<div id="blx"></div>
 		</div>

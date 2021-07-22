@@ -10,7 +10,7 @@
 	user-select: none;
 }
 
-.dke,.dke *,.dke input[type="text"] {
+.dke, .dke *, .dke input[type="text"] {
 	background-color: #1f1f1f;
 	color: white !important;
 }
@@ -253,7 +253,12 @@ h1, h2 {
 }
 
 .vrg{
-	width:calc(100% - 24px);
+	width: calc(100% - 24px);
+}
+
+.vrg .fan{
+	float: right;
+	display: none;
 }
 
 #shijieshizhong{
@@ -263,6 +268,7 @@ h1, h2 {
 .fsj{
 	font-size: calc(200% + 6px);
 	width: 50%;
+	font-weight: 100;
 }
 
 .ilk, .fsj{
@@ -278,5 +284,25 @@ select{
 
 #epl {
 	width: 500px;
-	border:solid 3px #065378;
+	border: solid 3px #065378;
+}
+
+.cbx, .ltb{
+	float: right;
+}
+
+#blx{
+	max-height: 500px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 500px;
+}
+
+#blx div{
+	width: 500px;
+	padding: 3px;
+}
+
+#blx div:hover{
+	background-color: gray;
 }

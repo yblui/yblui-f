@@ -30,16 +30,15 @@ setInterval(function () {
 	var a = new Date().getHours();
 	var b = new Date().getMinutes();
 	var c = a, d = b;
-	if (a.length == 1) c = "0" + a;
-	if (b.length == 1) d = "0" + b;
+	if (b.toString().length == 1) d = "0" + b;
 	document.getElementById("lct").innerText = c + ":" + d;
 	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
 	for (x = 0; x < oct.length; x++) {
-		if (a.length == 1) c = "0" + a;
-		if (b.length == 1) d = "0" + b;
 		var i = Number(new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), a, b, 0, 0)) + 3600000 * (dif[oct[x]] + new Date()
 			.getTimezoneOffset() / 60);
-		document.getElementById("city" + oct[x]).getElementsByClassName("fsj")[0].innerText = new Date(i).getHours() + ":" + new Date(i).getMinutes();
+		c = new Date(i).getHours()
+		if (new Date(i).getMinutes() == 1) d = "0" + new Date(i).getMinutes();
+		document.getElementById("city" + oct[x]).getElementsByClassName("fsj")[0].innerText = c + ":" + d;
 		document.getElementById("city" + oct[x]).getElementsByClassName("rqj")[0].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
 			.getDate() + ", " + (dif[oct[x]] + new Date().getTimezoneOffset() / 60) + "小时";
 	}
@@ -285,7 +284,7 @@ function bcn(tme, nme, a, b, c, d, e, f, g) {
 	a[0] = Number(a[0]).toString();
 	a = a.join(":");
 	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" class="cbx" checked="checked"/><button onclick="dbx(this\
-		.parentNode.parentNode)" class="ltb fan">删除</button><br /><span class="tmd">' + a + '</span><span></span><br /><span class="hel">' + nme + '</span><div class="sma"><button style="border-color:' +
+		.parentNode.parentNode)" class="ltb fan">删除</button><span class="tmd">' + a + '</span><span></span><br /><span class="hel">' + nme + '</span><div class="sma"><button style="border-color:' +
 		a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c + '">二</button><button style="border-color:' + d +
 		'">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f + '">五</button><button style="border-color:' + g +
 		'">六</button></div></div></div>')
@@ -319,30 +318,49 @@ function ted() {
 }
 
 function adc() {
-	document.getElementById("search").style.display = "block";
+	if (document.getElementById("cac").innerText == "添加新城市") {
+		document.getElementById("search").style.display = "block";
+	} else {
+		document.getElementById("cpr").style.display = "inline";
+		document.getElementById("ced").style.display = "inline";
+		document.getElementById("cac").innerText = "添加新城市";
+	}
 }
 
 function hdt() {
 	document.getElementById("cpr").style.display = "none";
 	document.getElementById("ced").style.display = "none";
 	document.getElementById("cac").innerText = "完成";
+	for (var x = 0; x < (document.getElementById("shijieshizhong").getElementsByClassName("fan").length - 3); x++) {
+		document.getElementById("shijieshizhong").getElementsByClassName("box")[x + 1].getElementsByClassName("fan")[0].style.display = "inline";
+	}
 }
 
 function srh(srt) {
 	document.getElementById("blx").innerHTML = "";
 	if (srt != "") {
 		for (var x = 0; x < cities.length; x++) {
-			if (cities[x].indexOf(srt) != -1) document.getElementById("blx").innerHTML += ("<span onclick='aci(" + x + ")'>" + cities[x] + "</span><br/>");
+			if (cities[x].indexOf(srt) != -1) document.getElementById("blx").innerHTML += ("<div onclick='aci(" + x + ");qut();'>" + cities[x] + "</div>");
 		}
 	}
 }
 
 function aci(act) {
-	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span>\
-		</div></div>';
+	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><button class="fan" onclick="dee(this.parentNode)">删除</button>\
+		<span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div></div>';
 	oct[oct.length] = act;
 }
 
 function qut() {
 	document.getElementById("search").style.display = "none";
+}
+
+function dee(det) {
+	for (var x = 0; x < oct.length; x++) {
+		if (oct[x] == det.id.replace("city", "")) {
+			oct.splice(x, 1);
+			break;
+		}
+	}
+	det.parentNode.removeChild(det);
 }
