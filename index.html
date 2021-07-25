@@ -113,8 +113,8 @@
 				<option>1小时</option>
 			</select>
 			<br />
-			<button class="blb fan" onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this.parentNode
-				.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
+			<button class="blb fan" onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this
+				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
 				.getElementsByTagName('button')[1].style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[2]
 				.style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[3].style.borderColor,this
 				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[4].style.borderColor,this.parentNode
@@ -136,9 +136,17 @@
 				<span id="wdt" class="rqj"></span>
 			</div>
 		</div>
+		<div id="hde">
+			<input type="date" />
+			<div class="box vrg">
+				<b>本地时间</b>
+				<br />
+				<span id="wdu" class="rqj"></span>
+			</div>
+		</div>
 		<div class="opt">
-			<button class="fan" id="cpr">比较</button><button class="fan" onclick="hdt()" id="ced">编辑时钟</button><button
-				class="blb fan" onclick="adc()" id="cac">添加新城市</button>
+			<button class="fan" id="cpr" onclick="cmp()">比较</button><button class="fan" onclick="hdt()" id="ced">编辑时钟</button><button class="blb fan"
+				onclick="adc()" id="cac">添加新城市</button>
 		</div>
 	</div>
 	<div id="miaobiao">

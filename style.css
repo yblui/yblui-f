@@ -131,7 +131,7 @@ p[id]:hover {
 	width: 85%;
 }
 
-#miaobiao{
+#miaobiao {
 	position: absolute;
 	left: 57.5%;
 	transform: translateX(-50%) translateY(-50%);
@@ -252,30 +252,30 @@ h1, h2 {
 	font-size: 18pt!important;
 }
 
-.vrg{
+.vrg {
 	width: calc(100% - 24px);
 }
 
-.vrg .fan{
+.vrg .fan {
 	float: right;
 	display: none;
 }
 
-#shijieshizhong{
+#shijieshizhong {
 	width: 80%;
 }
 
-.fsj{
+.fsj {
 	font-size: calc(200% + 6px);
 	width: 50%;
 	font-weight: 100;
 }
 
-.ilk, .fsj{
+.ilk, .fsj {
 	display: inline-block;
 }
 
-select{
+select {
 	width: 200px;
 	padding: 6px;
 	border-radius: 0;
@@ -287,22 +287,38 @@ select{
 	border: solid 3px #065378;
 }
 
-.cbx, .ltb{
+.cbx, .ltb {
 	float: right;
 }
 
-#blx{
+#blx {
 	max-height: 500px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: 500px;
 }
 
-#blx div{
+#blx div {
 	width: 500px;
 	padding: 3px;
 }
 
-#blx div:hover{
+#blx div:hover {
 	background-color: gray;
+}
+
+#hde {
+	display: none;
+	position: fixed;
+	width: 85%;
+	height: 100%;
+	left: 15%;
+	top: 0;
+}
+
+input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+	border-radius: 3px;
+	border: solid 3px gray;
 }

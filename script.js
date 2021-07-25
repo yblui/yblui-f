@@ -19,12 +19,17 @@ var ysj = {
 };
 var cities = [
 	"北京，中国", "成都，中国", "大理，中国", "大连，中国", "广州，中国", "哈尔滨，中国", "杭州，中国", "拉萨，中国", "南京，中国", "青岛，中国", "厦门，中国", "上海，中国",
-	"深圳，中国", "沈阳，中国", "苏州，中国", "阿尔伯克基，新墨西哥州，美国", "阿卡迪亚，加利福尼亚州，美国", "阿克伦，俄亥俄州，美国", "阿灵顿，弗吉尼亚州，美国", "阿伦敦，宾夕法尼亚州，美国",
-	"阿马里洛，得克萨斯州，美国", "阿纳海姆，加利福尼亚州，美国", "阿普尔顿，威斯康星州，美国", "埃尔帕索，得克萨斯州，美国"
+	"深圳，中国", "沈阳，中国", "苏州，中国", "阿尔伯克基，新墨西哥州，美国", "阿卡迪亚，加利福尼亚州，美国", "阿克伦，俄亥俄州，美国", "阿灵顿，弗吉尼亚州，美国",
+	"阿伦敦，宾夕法尼亚州，美国", "阿马里洛，得克萨斯州，美国", "阿纳海姆，加利福尼亚州，美国", "阿普尔顿，威斯康星州，美国", "埃尔帕索，得克萨斯州，美国", "伯明翰，英格兰",
+	"布拉德福，英格兰", "布赖顿，英格兰", "布里斯托尔，英格兰", "多佛尔，英格兰", "赫尔，英格兰", "剑桥，英格兰", "考文垂，英格兰", "利物浦，英格兰", "利兹，英格兰",
+	"伦敦，英格兰", "曼彻斯特，英格兰", "罗德城，英属维尔京群岛", "南安普敦，英国", "牛津，英格兰", "阿纳德尔，俄罗斯", "鄂木斯克，俄罗斯", "伏尔加格勒，俄罗斯", "海参崴，俄罗斯",
+	"加里宁格勒，俄罗斯", "堪察加彼得罗巴甫洛夫斯克，俄罗斯", "克拉斯诺雅思克，俄罗斯", "马加丹，俄罗斯", "摩尔曼斯克，俄罗斯", "莫斯科，俄罗斯", "乔库尔达赫，俄罗斯",
+	"萨马拉，俄罗斯", "圣彼得堡，俄罗斯", "乌法，俄罗斯", "下诺夫哥罗德，俄罗斯"
 ];
 var oct = [];
 var dif = [
-	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6
+	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -4, 1, 1, 12, 6, 3, 10, 2, 12, 7, 11, 3, 3, 11,
+	4, 3, 5, 3
 ];
 setInterval(function () {
 	var a = new Date().getHours();
@@ -33,6 +38,7 @@ setInterval(function () {
 	if (b.toString().length == 1) d = "0" + b;
 	document.getElementById("lct").innerText = c + ":" + d;
 	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
+	document.getElementById("wdu").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
 	for (x = 0; x < oct.length; x++) {
 		var i = Number(new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), a, b, 0, 0)) + 3600000 * (dif[oct[x]] + new Date()
 			.getTimezoneOffset() / 60);
@@ -40,6 +46,8 @@ setInterval(function () {
 		if (new Date(i).getMinutes() == 1) d = "0" + new Date(i).getMinutes();
 		document.getElementById("city" + oct[x]).getElementsByClassName("fsj")[0].innerText = c + ":" + d;
 		document.getElementById("city" + oct[x]).getElementsByClassName("rqj")[0].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
+			.getDate() + ", " + (dif[oct[x]] + new Date().getTimezoneOffset() / 60) + "小时";
+		document.getElementById("hde").getElementsByClassName("rqj")[x + 1].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
 			.getDate() + ", " + (dif[oct[x]] + new Date().getTimezoneOffset() / 60) + "小时";
 	}
 }, 10);
@@ -321,19 +329,23 @@ function adc() {
 	if (document.getElementById("cac").innerText == "添加新城市") {
 		document.getElementById("search").style.display = "block";
 	} else {
+		for (var x = 0; x < (document.getElementById("shijieshizhong").getElementsByClassName("fan").length - 3); x++) {
+			document.getElementById("shijieshizhong").getElementsByClassName("fan")[x + 3].style.display = "none";
+		}
 		document.getElementById("cpr").style.display = "inline";
 		document.getElementById("ced").style.display = "inline";
 		document.getElementById("cac").innerText = "添加新城市";
+		document.getElementById("hde").style.display = "none";
 	}
 }
 
 function hdt() {
+	for (var x = 0; x < (document.getElementById("shijieshizhong").getElementsByClassName("fan").length - 3); x++) {
+		document.getElementById("shijieshizhong").getElementsByClassName("fan")[x + 3].style.display = "inline";
+	}
 	document.getElementById("cpr").style.display = "none";
 	document.getElementById("ced").style.display = "none";
 	document.getElementById("cac").innerText = "完成";
-	for (var x = 0; x < (document.getElementById("shijieshizhong").getElementsByClassName("fan").length - 3); x++) {
-		document.getElementById("shijieshizhong").getElementsByClassName("box")[x + 1].getElementsByClassName("fan")[0].style.display = "inline";
-	}
 }
 
 function srh(srt) {
@@ -348,6 +360,7 @@ function srh(srt) {
 function aci(act) {
 	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><button class="fan" onclick="dee(this.parentNode)">删除</button>\
 		<span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div></div>';
+	document.getElementById("hde").innerHTML += '<div class="box vrg"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div>';
 	oct[oct.length] = act;
 }
 
@@ -363,4 +376,11 @@ function dee(det) {
 		}
 	}
 	det.parentNode.removeChild(det);
+}
+
+function cmp() {
+	document.getElementById("hde").style.display = "block";
+	document.getElementById("cpr").style.display = "none";
+	document.getElementById("ced").style.display = "none";
+	document.getElementById("cac").innerText = "完成";
 }
