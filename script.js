@@ -24,12 +24,15 @@ var cities = [
 	"布拉德福，英格兰", "布赖顿，英格兰", "布里斯托尔，英格兰", "多佛尔，英格兰", "赫尔，英格兰", "剑桥，英格兰", "考文垂，英格兰", "利物浦，英格兰", "利兹，英格兰",
 	"伦敦，英格兰", "曼彻斯特，英格兰", "罗德城，英属维尔京群岛", "南安普敦，英国", "牛津，英格兰", "阿纳德尔，俄罗斯", "鄂木斯克，俄罗斯", "伏尔加格勒，俄罗斯", "海参崴，俄罗斯",
 	"加里宁格勒，俄罗斯", "堪察加彼得罗巴甫洛夫斯克，俄罗斯", "克拉斯诺雅思克，俄罗斯", "马加丹，俄罗斯", "摩尔曼斯克，俄罗斯", "莫斯科，俄罗斯", "乔库尔达赫，俄罗斯",
-	"萨马拉，俄罗斯", "圣彼得堡，俄罗斯", "乌法，俄罗斯", "下诺夫哥罗德，俄罗斯"
+	"萨马拉，俄罗斯", "圣彼得堡，俄罗斯", "乌法，俄罗斯", "下诺夫哥罗德，俄罗斯", "乌兰巴托，蒙古", "阿格拉，印度", "艾哈迈达巴德，印度", "班加罗尔，印度", "果阿，印度",
+	"海德拉巴，印度", "加尔各答，印度", "孟买，印度", "浦那，印度", "钦奈，印度", "瓦腊纳西，印度", "平壤，朝鲜", "阿拉木图，哈萨克斯坦", "阿斯塔纳，哈萨克斯坦", "彬马那，缅甸",
+	"曼德勒，缅甸", "奈比多，缅甸", "仰光，缅甸", "加德满都，尼泊尔", "河内，越南", "胡志明市，越南", "岘港，越南", "廷布，不丹", "比什凯克，吉尔吉斯斯坦", "杜尚别，塔吉克斯坦",
+	"喀布尔，阿富汗", "白沙瓦，巴基斯坦"
 ];
 var oct = [];
 var dif = [
 	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -4, 1, 1, 12, 6, 3, 10, 2, 12, 7, 11, 3, 3, 11,
-	4, 3, 5, 3
+	4, 3, 5, 3, 8, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 9, 6, 6, 6.5, 6.5, 6.5, 6.5, 5.75, 7, 7, 7, 6, 6, 5, 4.5, 5
 ];
 setInterval(function () {
 	var a = new Date().getHours();
@@ -39,17 +42,21 @@ setInterval(function () {
 	document.getElementById("lct").innerText = c + ":" + d;
 	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
 	document.getElementById("wdu").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
-	for (x = 0; x < oct.length; x++) {
-		var i = Number(new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), a, b, 0, 0)) + 3600000 * (dif[oct[x]] + new Date()
+	for (y = 0; y < oct.length; y++) {
+		var i = Number(new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), a, b, 0, 0)) + 3600000 * (dif[oct[y]] + new Date()
 			.getTimezoneOffset() / 60);
-		c = new Date(i).getHours()
-		if (new Date(i).getMinutes() == 1) d = "0" + new Date(i).getMinutes();
-		document.getElementById("city" + oct[x]).getElementsByClassName("fsj")[0].innerText = c + ":" + d;
-		document.getElementById("city" + oct[x]).getElementsByClassName("rqj")[0].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
-			.getDate() + ", " + (dif[oct[x]] + new Date().getTimezoneOffset() / 60) + "小时";
-		document.getElementById("hde").getElementsByClassName("rqj")[x + 1].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
-			.getDate() + ", " + (dif[oct[x]] + new Date().getTimezoneOffset() / 60) + "小时";
+		c = new Date(i).getHours();
+		d = new Date(i).getMinutes();
+		if (new Date(i).getMinutes().length == 1) d = "0" + new Date(i).getMinutes();
+		document.getElementById("city" + oct[y]).getElementsByClassName("fsj")[0].innerText = c + ":" + d;
+		document.getElementById("city" + oct[y]).getElementsByClassName("rqj")[0].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
+			.getDate() + ", " + (dif[oct[y]] + new Date().getTimezoneOffset() / 60) + "小时";
+		document.getElementById("hde").getElementsByClassName("rqj")[y + 1].innerText = new Date(i).getFullYear() + "/" + new Date(i).getMonth() + "/" + new Date(i)
+			.getDate() + ", " + (dif[oct[y]] + new Date().getTimezoneOffset() / 60) + "小时";
 	}
+	document.getElementById("vgo").innerHTML = "<td>" + (new Date().getHours() + 20) % 24 + "</td><td>" + (new Date().getHours() + 21) % 24 + "</td><td>" + (new Date()
+		.getHours() + 22) % 24 + "</td><td>" + (new Date().getHours() + 23) % 24 + "</td><td>" + new Date().getHours() + "</td><td>" + (new Date().getHours() + 1) % 24 +
+		"</td><td>" + (new Date().getHours() + 2) % 24 + "</td><td>" + (new Date().getHours() + 3) % 24 + "</td><td>" + (new Date().getHours() + 4) % 24 + "</td>";
 }, 10);
 
 function da() {
@@ -104,8 +111,8 @@ function db() {
 	if (str[7] == ".") str.splice(6, 0, "0");
 	if (str.length == 10) str.splice(9, 0, "0");
 	str = str.join("");
-	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" +
-		str + "</td><td>" + document.getElementById("div").innerText + "</td>");
+	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" + str + "</td><td>" +
+		document.getElementById("div").innerText + "</td>");
 	sdb[sdb.length] = tfd - tfb;
 	for (var i = 0; i < sdb.length; i++) {
 		if (sdb[i] == Math.max.apply(null, sdb)) {
@@ -116,8 +123,8 @@ function db() {
 			document.getElementById("tr" + (i + 1)).getElementsByClassName("kmb")[0].innerText = "";
 		}
 	}
-	tfb = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 +
-		Number(document.getElementById("c").innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
+	tfb = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 + Number(document.getElementById("c")
+		.innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
 	num++;
 	document.getElementById("tbl").style.display = "table";
 }
@@ -156,19 +163,19 @@ function fsc() {
 
 function sel(sle) {
 	for (var i = 0; i <= 4; i++) {
-		document.getElementById(["jsq", "naz", "sjz", "mib", "set"][i]).className = ""
-		document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][i]).style.display = "none"
-		if (sle == ["jsq", "naz", "sjz", "mib", "set"][i]) mbs = i
+		document.getElementById(["jsq", "naz", "sjz", "mib", "set"][i]).className = "";
+		document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][i]).style.display = "none";
+		if (sle == ["jsq", "naz", "sjz", "mib", "set"][i]) mbs = i;
 	}
-	document.getElementById(sle).className = "sld"
-	document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][mbs]).style.display = "block"
+	document.getElementById(sle).className = "sld";
+	document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][mbs]).style.display = "block";
 }
 
 function tun(ltm) {
 	if (ltm) {
-		document.getElementsByTagName("html")[0].className = ""
+		document.getElementsByTagName("html")[0].className = "";
 	} else {
-		document.getElementsByTagName("html")[0].className = "dke"
+		document.getElementsByTagName("html")[0].className = "dke";
 	}
 }
 
@@ -187,14 +194,12 @@ function stt(sti) {
 						fda = new Date();
 						if ((jso[i] - (fda - counting[i])) <= 0) {
 							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].innerText = "开始";
-							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].disabled =
-								"disabled";
+							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "disabled";
 							counting[i] = 0;
 							return;
 						}
 						var tmp = jso[i] - (fda - counting[i]);
-						sts = ((tmp - tmp % 3600000) / 3600000 + ":" + ((tmp - tmp % 60000) / 60000) % 60 + ":" + ((tmp - tmp %
-							1000) / 1000) % 60).split("");
+						sts = ((tmp - tmp % 3600000) / 3600000 + ":" + ((tmp - tmp % 60000) / 60000) % 60 + ":" + ((tmp - tmp % 1000) / 1000) % 60).split("");
 						if (sts[1] == ":") sts.splice(0, 0, "0");
 						if (sts[4] == ":") sts.splice(3, 0, "0");
 						if (sts.length == 7) sts.splice(6, 0, "0");
@@ -212,8 +217,8 @@ function stt(sti) {
 
 function rst(rsi) {
 	val = clearInterval(val);
-	document.getElementById("j" + rsi).innerText = (ysj[rsi] - ysj[rsi] % 3600000) / 3600000 + ":" + ((ysj[rsi] - ysj[rsi] % 60000) /
-		60000) % 60 + ":" + ((ysj[rsi] - ysj[rsi] % 1000) / 1000) % 60;
+	document.getElementById("j" + rsi).innerText = (ysj[rsi] - ysj[rsi] % 3600000) / 3600000 + ":" + ((ysj[rsi] - ysj[rsi] % 60000) / 60000) % 60 + ":" + ((ysj[rsi] -
+		ysj[rsi] % 1000) / 1000) % 60;
 	czs = document.getElementById("j" + rsi).innerText.split("");
 	if (czs[1] == ":") czs.splice(0, 0, "0");
 	if (czs[4] == ":") czs.splice(3, 0, "0");
@@ -221,6 +226,7 @@ function rst(rsi) {
 	czs = czs.join("");
 	document.getElementById("j" + rsi).innerText = czs;
 	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "";
+	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByClassName("blb")[0].innerText = "开始";
 }
 
 function sve(nam, tim) {
@@ -255,8 +261,8 @@ function jfc(jft) {
 }
 
 function edt() {
-	for (var x = 0; x < document.getElementById("jishiqi").getElementsByClassName("box").length; x++) {
-		document.getElementById("jishiqi").getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "删除";
+	for (var z = 0; z < document.getElementById("jishiqi").getElementsByClassName("box").length; z++) {
+		document.getElementById("jishiqi").getElementsByClassName("box")[z].getElementsByTagName("button")[2].innerText = "删除";
 		document.getElementById("bjj").style.display = "none";
 		document.getElementById("tjj").innerText = "完成";
 	}
@@ -266,8 +272,8 @@ function adj() {
 	if (document.getElementById("tjj").innerText == "添加新计时器") {
 		document.getElementById('add').style.display = 'block';
 	} else {
-		for (var x = 0; x < document.getElementById("jishiqi").getElementsByClassName("box").length; x++) {
-			document.getElementById("jishiqi").getElementsByClassName("box")[x].getElementsByTagName("button")[2].innerText = "展开";
+		for (var m = 0; m < document.getElementById("jishiqi").getElementsByClassName("box").length; m++) {
+			document.getElementById("jishiqi").getElementsByClassName("box")[m].getElementsByTagName("button")[2].innerText = "展开";
 		}
 		document.getElementById("bjj").style.display = "inline";
 		document.getElementById("tjj").innerText = "添加新计时器";
@@ -278,9 +284,9 @@ function tjn() {
 	if (document.getElementById("nzf").innerText == "添加闹钟") {
 		document.getElementById('xnz').style.display = 'block';
 	} else {
-		for (var x = 0; x < document.getElementsByClassName("ltb").length; x++) {
-			document.getElementsByClassName("cbx")[x].style.display = "inline";
-			document.getElementsByClassName("ltb")[x].style.display = "none";
+		for (var n = 0; n < document.getElementsByClassName("ltb").length; n++) {
+			document.getElementsByClassName("cbx")[n].style.display = "inline";
+			document.getElementsByClassName("ltb")[n].style.display = "none";
 		}
 		document.getElementById("nzf").innerText = "添加闹钟";
 		document.getElementById("nze").style.display = "inline";
@@ -292,10 +298,10 @@ function bcn(tme, nme, a, b, c, d, e, f, g) {
 	a[0] = Number(a[0]).toString();
 	a = a.join(":");
 	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" class="cbx" checked="checked"/><button onclick="dbx(this\
-		.parentNode.parentNode)" class="ltb fan">删除</button><span class="tmd">' + a + '</span><span></span><br /><span class="hel">' + nme + '</span><div class="sma"><button style="border-color:' +
-		a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c + '">二</button><button style="border-color:' + d +
-		'">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f + '">五</button><button style="border-color:' + g +
-		'">六</button></div></div></div>')
+		.parentNode.parentNode)" class="ltb fan">删除</button><span class="tmd">' + a + '</span><span></span><br /><span class="hel">' + nme +
+		'</span><div class="sma"><button style="border-color:' + a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c +
+		'">二</button><button style="border-color:' + d + '">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f +
+		'">五</button><button style="border-color:' + g + '">六</button></div></div></div>');
 	document.getElementById("xnz").style.display = "none";
 }
 
@@ -306,7 +312,8 @@ function ccl(cle) {
 	} else {
 		cle.style.borderColor = "gray";
 		for (var x = 0; x < document.getElementsByClassName("sma")[1].getElementsByTagName("button").length; x++) {
-			if (document.getElementsByClassName("sma")[1].getElementsByTagName("button")[x].style.borderColor != "gray" && document.getElementsByClassName("sma")[1].getElementsByTagName("button")[x].style.borderColor != "") return;
+			if (document.getElementsByClassName("sma")[1].getElementsByTagName("button")[x].style.borderColor != "gray" && document.getElementsByClassName("sma")[1]
+				.getElementsByTagName("button")[x].style.borderColor != "") return;
 		}
 		document.getElementById("cfn").checked = "";
 	}
@@ -360,7 +367,8 @@ function srh(srt) {
 function aci(act) {
 	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><button class="fan" onclick="dee(this.parentNode)">删除</button>\
 		<span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div></div>';
-	document.getElementById("hde").innerHTML += '<div class="box vrg"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div>';
+	document.getElementById("hde").innerHTML += '<div class="box vrg" id="cpa' + act + '"><b>' + cities[act] + '</b><br /><span class="rqj"></span><table><tr><td></td>\
+		<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div>';
 	oct[oct.length] = act;
 }
 
@@ -375,6 +383,7 @@ function dee(det) {
 			break;
 		}
 	}
+	document.getElementById("hde").removeChild(document.getElementById("cpa" + det.id.replace("city", "")));
 	det.parentNode.removeChild(det);
 }
 

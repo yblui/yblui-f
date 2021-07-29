@@ -12,15 +12,15 @@
 
 .dke, .dke *, .dke input[type="text"] {
 	background-color: #1f1f1f;
-	color: white !important;
+	color: white!important;
 }
 
-.dke button {
+.dke .sma button, .dke .box .cte button, .dke .opt button, .dke .dlg button, .dke #miaobiao #btb, .dke #miaobiao #btc {
 	background-color: #4c4c4c;
 }
 
-.dke button:enabled:hover, .dke #fcb:hover, .dke p[id]:hover {
-	background-color: #353535;
+.dke button:enabled:not(.blb):hover, .dke #fcb:hover, .dke p[id]:hover, .dke #miaobiao #btb:enabled:hover, .dke #miaobiao #btc:enabled:hover {
+	background-color: #353535!important;
 }
 
 .dke #ttr th {
@@ -28,7 +28,7 @@
 }
 
 .dke .box, .dke .box .cte, .dke .box .cte span, .dke .box .lte, .dke .box .lte span, .dke .dlg, .dke .dlg h2, .dke .dlg div, .dke .dlg div span, .dke .sma,
-.dke .dlg label, .dke .box b, .dke .box .fsj, .dke .box .rqj, .dke .ilk {
+.dke .dlg label, .dke .ilk, .dke .box *, .dke .box * * {
 	background-color: #282828;
 }
 
@@ -37,7 +37,6 @@
 }
 
 table {
-	text-align: center;
 	width: 60%;
 	margin: 0 auto;
 	display: none;
@@ -52,7 +51,7 @@ table {
 	border-bottom: solid 2px lightgray;
 }
 
-td, th {
+td, th, p {
 	padding: 9px;
 	text-align: left;
 }
@@ -71,21 +70,16 @@ html, body {
 	background-color: transparent;
 }
 
-#fcb:hover {
+#fcb:hover, button:enabled:hover, p[id]:hover {
 	background-color: #dadada;
 }
 
 button {
 	border: none;
-	background-color: #c2c2c2;
 	border-radius: 50%;
 	width: 60px;
 	height: 60px;
 	margin: 9px;
-}
-
-button:enabled:hover {
-	background-color: #dadada;
 }
 
 .fan {
@@ -102,16 +96,6 @@ button:enabled:hover {
 
 .blb:hover {
 	background-color: #076491 !important;
-}
-
-p {
-	text-align: left;
-	padding: 9px;
-	cursor: default;
-}
-
-p[id]:hover {
-	background-color: #dadada;
 }
 
 #tgl {
@@ -135,7 +119,8 @@ p[id]:hover {
 	position: absolute;
 	left: 57.5%;
 	transform: translateX(-50%) translateY(-50%);
-	top:34%;
+	top: 34%;
+	width: 80%;
 }
 
 input[type="radio"] {
@@ -147,18 +132,12 @@ input[type="radio"]:checked {
 	appearance: none;
 	border: solid 6px #065378;
 	border-radius: 50%;
-	background-color: white;
 }
 
 input[type="text"] {
 	padding: 3px;
 	border: solid 2px gray;
 	outline: none;
-	background-color:white;
-}
-
-#miaobiao {
-	text-align: center;
 }
 
 h1, h2 {
@@ -178,11 +157,9 @@ h1, h2 {
 	width: 350px;
 	height: 350px;
 	padding: 3px;
-	background-color: white;
 }
 
 .dlg h2, .dlg div, .dlg span, .dlg label, .ilk {
-	background-color: white;
 	margin: 3px;
 }
 
@@ -207,29 +184,40 @@ h1, h2 {
 	padding: 9px;
 	margin: 3px;
 	border-radius: 3px;
-	box-shadow:0px 0px 9px lightgray;
+	box-shadow: 0px 0px 9px lightgray;
 }
 
-.box, .box .lte, .cte, .sma, .box b, .box .fsj, .box .rqj {
+.box, .box *, .box * *, input[type="radio"]:checked, .dlg h2, .dlg div, .dlg span, .dlg label, .ilk, .dlg, .box .lte span, .box .cte span, input[type="text"] {
 	background-color: white;
 }
 
-.box .lte span,.box .cte span {
-	background-color: white;
+.box .cte button, .sma button, button {
+	background-color: #c2c2c2;
+}
+
+.box .cte button:enabled:hover {
+	background-color: #dadada;
+}
+
+.box .lte span, .box .cte span {
 	font-size: 30pt;
 	font-family: "Microsoft Yahei", sans-serif;
 }
 
-.cte {
+#shijieshizhong .box {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.cte, .etm, table, #miaobiao {
 	text-align: center;
 }
 
 .etm {
-	text-align: center;
 	font-size: 30pt;
 }
 
-#search {
+#search, .lte button[onclick] {
 	display: none;
 }
 
@@ -237,10 +225,6 @@ h1, h2 {
 	width: 30px;
 	height: 30px;
 	border: solid 3px gray;
-}
-
-.lte button[onclick] {
-	display: none;
 }
 
 .tmd {
@@ -257,12 +241,11 @@ h1, h2 {
 }
 
 .vrg .fan {
-	float: right;
 	display: none;
 }
 
 #shijieshizhong {
-	width: 80%;
+	width: 85%;
 }
 
 .fsj {
@@ -287,7 +270,7 @@ select {
 	border: solid 3px #065378;
 }
 
-.cbx, .ltb {
+.cbx, .ltb, .vrg .fan {
 	float: right;
 }
 
@@ -316,9 +299,25 @@ select {
 	top: 0;
 }
 
+#hde div div, #hde div table {
+	display: inline-block;
+}
+
+#hde div div {
+	width: 30%;
+}
+
 input[type="checkbox"] {
 	width: 20px;
 	height: 20px;
 	border-radius: 3px;
 	border: solid 3px gray;
+}
+
+#tbl {
+	position: absolute;
+	height: 35%;
+	overflow-y: auto;
+	width: 60%;
+	right: 20%;
 }
