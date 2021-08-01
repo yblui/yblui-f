@@ -76,6 +76,7 @@
 				<input type="checkbox" class="cbx" />
 				<button onclick="dbx(this.parentNode.parentNode)" class="ltb fan">删除</button>
 				<span class="tmd">7:00</span>
+				<br />
 				<span></span>
 				<br />
 				<span class="hel">早上好</span>
@@ -122,6 +123,10 @@
 		</div>
 	</div>
 	<div id="shijieshizhong">
+		<div class="opt">
+			<button class="fan" id="cpr" onclick="cmp()">比较</button><button class="fan" onclick="hdt()"
+				id="ced">编辑时钟</button><button class="blb fan" onclick="adc()" id="cac">添加新城市</button>
+		</div>
 		<div id="search">
 			<input type="text" placeholder="输入地点" id="epl" onkeyup="srh(this.value)" />
 			<div id="blx"></div>
@@ -142,6 +147,7 @@
 					<br />
 					<span id="wdu" class="rqj"></span>
 				</div>
+				<button onclick="rev()" class="fan nrt">向前</button>
 				<table>
 					<tr id="vgo">
 						<td></td>
@@ -155,11 +161,8 @@
 						<td></td>
 					</tr>
 				</table>
+				<button onclick="ext()" class="fan nrt">向后</button>
 			</div>
-		</div>
-		<div class="opt">
-			<button class="fan" id="cpr" onclick="cmp()">比较</button><button class="fan" onclick="hdt()"
-				id="ced">编辑时钟</button><button class="blb fan" onclick="adc()" id="cac">添加新城市</button>
 		</div>
 	</div>
 	<div id="miaobiao">
