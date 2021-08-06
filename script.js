@@ -1,4 +1,4 @@
-var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0, czs = '', val, nwo = 0;
+var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0, czs = '', val, nwo = 0, ifmy = 0;
 var counting = {
 	'1分钟': 0,
 	'3分钟': 0,
@@ -32,13 +32,14 @@ var cities = [
 	"奈良，日本", "千叶，日本", "秋田，日本", "神户，日本", "大丘，韩国", "大邱，韩国", "大田，韩国", "釜山，韩国", "光州，韩国", "首尔，韩国", "达沃，菲律宾", "马尼拉，菲律宾",
 	"宿务岛，菲律宾", "哥打基纳巴卢，马来西亚", "古晋，马来西亚", "吉隆坡，马来西亚", "纳闽，马来西亚", "普特拉贾亚，马来西亚", "柔佛巴鲁，马来西亚", "云顶高原，马来西亚",
 	"班达尔斯里巴加湾，文莱", "巴厘岛，印度尼西亚", "登巴萨，印度尼西亚", "棉兰，印度尼西亚", "泗水，印度尼西亚", "万隆，印度尼西亚", "雅加达，印度尼西亚",
-	"阿德莱德，南澳大利亚，澳大利亚", "布里斯班，昆士兰，澳大利亚"
+	"阿德莱德，南澳大利亚，澳大利亚", "布里斯班，昆士兰，澳大利亚", "达尔文，北领地，澳大利亚", "黄金海岸，昆士兰，澳大利亚", "霍巴特，塔斯马尼亚，澳大利亚", "堪培拉，澳大利亚",
+	"墨尔本，维多利亚，澳大利亚", "纽卡斯尔，澳大利亚", "珀斯，西澳大利亚，澳大利亚"
 ];
 var oct = [];
 var dif = [
 	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -4, 1, 1, 12, 6, 3, 10, 2, 12, 7, 11, 3, 3, 11,
 	4, 3, 5, 3, 8, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 9, 6, 6, 6.5, 6.5, 6.5, 6.5, 5.75, 7, 7, 7, 6, 6, 5, 4.5, 5, 5, 5, 5, 5, 5, 5, 7, 9, 9, 9, 9, 9, 9,
-	9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 9.5, 10
+	9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 9.5, 10, 9.5, 10, 10, 10, 10, 10, 8
 ];
 setInterval(function () {
 	var a = new Date().getHours();
@@ -70,11 +71,27 @@ setInterval(function () {
 		+ (new Date().getHours() + 4 + nwo) % 24 + "</td>";
 	for (var p = 0; p < document.getElementsByClassName("tmd").length; p++) {
 		var lp = document.getElementsByClassName("tmd")[p].innerText.split(":");
-		var ltp = (lp[0] * 3600000 + lp[1] * 60000 + 86400000 - new Date() % 86400000 +new Date().getTimezoneOffset() *60000) % 86400000;
+		var ltp = (lp[0] * 3600000 + lp[1] * 60000 + 86400000 - new Date() % 86400000 + new Date().getTimezoneOffset() * 60000) % 86400000;
 		document.getElementsByClassName("lte")[p].getElementsByTagName("span")[1].innerText = (ltp - ltp % 3600000) / 3600000 + "小时" + (ltp - (ltp - ltp % 3600000) -
 			ltp % 60000) / 60000 + "分钟内";
+		if (lp[0] * 3600000 + lp[1] * 60000 == new Date().getHours() * 3600000 + new Date().getMinutes() * 60000 && document.getElementById("naozhong").innerHTML
+			.indexOf('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p].innerText + '</b>') == -1 && document.getElementsByClassName("cbx")[p].checked
+			&& ifmy < 0 && (document.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "" || document.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "gray" || !chl(p))) {
+			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p].innerText + '</b><br/>\
+				<button class="wib" onclick="xch(this)">消除</button></div>');
+			ifmy = 60000;
+			if (!chl(p)) document.getElementsByClassName("cbx")[p].checked = "";
+		}
 	}
+	ifmy -= 10;
 }, 10);
+
+function chl(xp) {
+	for (var lxp = 0; lxp < 7; lxp++) {
+		if (document.getElementsByClassName("sma")[xp].getElementsByTagName("button")[lxp].style.borderColor != "" && document.getElementsByClassName("sma")[xp].getElementsByTagName("button")[lxp].style.borderColor != "gray") return true;
+	}
+	return false;
+}
 
 function da() {
 	if (!std) {
@@ -420,4 +437,8 @@ function rev() {
 
 function ext() {
 	nwo++;
+}
+
+function xch(thi) {
+	thi.parentNode.parentNode.removeChild(thi.parentNode);
 }

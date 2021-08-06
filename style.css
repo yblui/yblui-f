@@ -318,3 +318,23 @@ input[type="checkbox"] {
 .lte span:nth-of-type(2) {
 	font-size: 14pt;
 }
+
+.fdo {
+	position: fixed;
+	bottom: 9px;
+	right: 9px;
+	width: 400px;
+	padding: 9px;
+	z-index: 100;
+}
+
+.fdo, .fdo * {
+	background-color: #c2c2c2;
+}
+
+.wib {
+	background-color: white;
+	height: 70px;
+	width: 150px;
+	border-radius: 0;
+}
