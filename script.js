@@ -1,4 +1,4 @@
-var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0, czs = '', val, nwo = 0, ifmy = 0;
+var sin, mns = 0, tfd = 0, tfb = 0, str = "", num = 1, std = false, bfs = false, sdb = [], mbs = 0, czs = '', val, nwo = 0, ifmy = 0, mi = 7;
 var counting = {
 	'1分钟': 0,
 	'3分钟': 0,
@@ -33,13 +33,17 @@ var cities = [
 	"宿务岛，菲律宾", "哥打基纳巴卢，马来西亚", "古晋，马来西亚", "吉隆坡，马来西亚", "纳闽，马来西亚", "普特拉贾亚，马来西亚", "柔佛巴鲁，马来西亚", "云顶高原，马来西亚",
 	"班达尔斯里巴加湾，文莱", "巴厘岛，印度尼西亚", "登巴萨，印度尼西亚", "棉兰，印度尼西亚", "泗水，印度尼西亚", "万隆，印度尼西亚", "雅加达，印度尼西亚",
 	"阿德莱德，南澳大利亚，澳大利亚", "布里斯班，昆士兰，澳大利亚", "达尔文，北领地，澳大利亚", "黄金海岸，昆士兰，澳大利亚", "霍巴特，塔斯马尼亚，澳大利亚", "堪培拉，澳大利亚",
-	"墨尔本，维多利亚，澳大利亚", "纽卡斯尔，澳大利亚", "珀斯，西澳大利亚，澳大利亚"
+	"墨尔本，维多利亚，澳大利亚", "纽卡斯尔，澳大利亚", "珀斯，西澳大利亚，澳大利亚", "悉尼，新南威尔士，澳大利亚", "巴西利亚，巴西", "阿雷格里港，巴西", "贝洛哈里桑塔，巴西",
+	"福塔雷萨，巴西", "坎皮纳斯，巴西", "库里提巴，巴西", "库亚巴，巴西", "累西腓，巴西", "里约布兰科，巴西", "里约热内卢，巴西", "马瑙斯，巴西", "纳塔尔，巴西", "萨尔瓦多，巴西",
+	"桑托斯，巴西", "圣保罗，巴西", "埃德蒙顿，阿尔伯达省，加拿大", "奥沙瓦，安大略省，加拿大", "多伦多，安大略省，加拿大", "哈利法克斯，新斯科舍省，加拿大",
+	"赫尔，魁北克省，加拿大", "怀特霍斯，育空地区，加拿大"
 ];
 var oct = [];
 var dif = [
 	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -4, 1, 1, 12, 6, 3, 10, 2, 12, 7, 11, 3, 3, 11,
 	4, 3, 5, 3, 8, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 9, 6, 6, 6.5, 6.5, 6.5, 6.5, 5.75, 7, 7, 7, 6, 6, 5, 4.5, 5, 5, 5, 5, 5, 5, 5, 7, 9, 9, 9, 9, 9, 9,
-	9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 9.5, 10, 9.5, 10, 10, 10, 10, 10, 8
+	9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 9.5, 10, 9.5, 10, 10, 10, 10, 10, 8, 10, -3, -3, -3, -3, -3, -3, -4,
+	-3, -5, -3, -4, -3, -3, -3, -3, -6, -4, -4, -3, -3, -7
 ];
 setInterval(function () {
 	var a = new Date().getHours();
@@ -69,18 +73,29 @@ setInterval(function () {
 		(new Date().getHours() + 22 + nwo) % 24 + "</td><td>" + (new Date().getHours() + 23 + nwo) % 24 + "</td><td>" + (new Date().getHours() + nwo) % 24 + "</td><td>" +
 		(new Date().getHours() + 1 + nwo) % 24 + "</td><td>" + (new Date().getHours() + 2 + nwo) % 24 + "</td><td>" + (new Date().getHours() + 3 + nwo) % 24 + "</td><td>"
 		+ (new Date().getHours() + 4 + nwo) % 24 + "</td>";
-	for (var p = 0; p < document.getElementsByClassName("tmd").length; p++) {
-		var lp = document.getElementsByClassName("tmd")[p].innerText.split(":");
+	for (var p = 1; p < document.getElementsByClassName("sma").length; p++) {
+		var lp = document.getElementsByClassName("tmd")[p - 1].innerText.split(":");
 		var ltp = (lp[0] * 3600000 + lp[1] * 60000 + 86400000 - new Date() % 86400000 + new Date().getTimezoneOffset() * 60000) % 86400000;
-		document.getElementsByClassName("lte")[p].getElementsByTagName("span")[1].innerText = (ltp - ltp % 3600000) / 3600000 + "小时" + (ltp - (ltp - ltp % 3600000) -
-			ltp % 60000) / 60000 + "分钟内";
+		mi = 7;
+		for (var lxp = 0; lxp < 7; lxp++) {
+			if ((new Date().getHours() > lp[0] || (new Date().getHours() == lp[0] && new Date().getMinutes() > lp[1])) && mi == 0 && new Date().getDay() == lxp) continue;
+			if (document.getElementsByClassName("sma")[p].getElementsByTagName("button")[lxp].style.borderColor != "" && document.getElementsByClassName("sma")[p]
+				.getElementsByTagName("button")[lxp].style.borderColor != "gray") mi = Math.min((lxp + 7 - new Date().getDay()) % 7, mi);
+		}
+		if (!chl(p)) mi = 0;
+		document.getElementsByClassName("lte")[p - 1].getElementsByTagName("span")[1].innerText = mi + "天" + (ltp - ltp % 3600000) / 3600000 + "小时" + (ltp - (ltp - ltp
+			% 3600000) - ltp % 60000) / 60000 + "分钟内";
 		if (lp[0] * 3600000 + lp[1] * 60000 == new Date().getHours() * 3600000 + new Date().getMinutes() * 60000 && document.getElementById("naozhong").innerHTML
-			.indexOf('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p].innerText + '</b>') == -1 && document.getElementsByClassName("cbx")[p].checked
-			&& ifmy < 0 && (document.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "" || document.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "gray" || !chl(p))) {
-			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p].innerText + '</b><br/>\
-				<button class="wib" onclick="xch(this)">消除</button></div>');
+			.indexOf('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b>') == -1 && document.getElementsByClassName("cbx")[p - 1]
+				.checked && ifmy < 0 && (document.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "" || document
+					.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "gray" || !chl(p))) {
+			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b><br/>\
+				推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>\
+				</select><button class="wib">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
+			document.getElementsByClassName("slc")[document.getElementsByClassName("slc").length - 1].getElementsByTagName("option")[Number(document
+				.getElementsByClassName("lte")[p - 1].parentNode.classList[1][3])].selected = "selected";
 			ifmy = 60000;
-			if (!chl(p)) document.getElementsByClassName("cbx")[p].checked = "";
+			if (!chl(p)) document.getElementsByClassName("cbx")[p - 1].checked = "";
 		}
 	}
 	ifmy -= 10;
@@ -88,7 +103,8 @@ setInterval(function () {
 
 function chl(xp) {
 	for (var lxp = 0; lxp < 7; lxp++) {
-		if (document.getElementsByClassName("sma")[xp].getElementsByTagName("button")[lxp].style.borderColor != "" && document.getElementsByClassName("sma")[xp].getElementsByTagName("button")[lxp].style.borderColor != "gray") return true;
+		if (document.getElementsByClassName("sma")[xp].getElementsByTagName("button")[lxp].style.borderColor != "" && document.getElementsByClassName("sma")[xp]
+			.getElementsByTagName("button")[lxp].style.borderColor != "gray") return true;
 	}
 	return false;
 }
@@ -135,18 +151,18 @@ function da() {
 }
 
 function db() {
-	tfd = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 +
-		Number(document.getElementById("c").innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
-	str = ((tfd - tfb) - (tfd - tfb) % 3600000) / 3600000 + ":" + ((((tfd - tfb) - (tfd - tfb) % 60000) / 60000) % 60) + ":" +
-		(((((tfd - tfb) - (tfd - tfb) % 1000) / 1000) % 60)) + "." + (((((tfd - tfb) - (tfd - tfb) % 10) / 10) % 100));
+	tfd = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 + Number(document.getElementById("c")
+		.innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
+	str = ((tfd - tfb) - (tfd - tfb) % 3600000) / 3600000 + ":" + ((((tfd - tfb) - (tfd - tfb) % 60000) / 60000) % 60) + ":" + (((((tfd - tfb) - (tfd - tfb) % 1000) /
+		1000) % 60)) + "." + (((((tfd - tfb) - (tfd - tfb) % 10) / 10) % 100));
 	str = str.split("");
 	if (str[1] == ":") str.splice(0, 0, "0");
 	if (str[4] == ":") str.splice(3, 0, "0");
 	if (str[7] == ".") str.splice(6, 0, "0");
 	if (str.length == 10) str.splice(9, 0, "0");
 	str = str.join("");
-	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" + str + "</td><td>" +
-		document.getElementById("div").innerText + "</td>");
+	document.getElementById("tbl").innerHTML += ("<tr id='tr" + num + "'><th>" + num + "</th><td class='kmb'></td><td class='csj'>" + str + "</td><td>" + document
+		.getElementById("div").innerText + "</td>");
 	sdb[sdb.length] = tfd - tfb;
 	for (var i = 0; i < sdb.length; i++) {
 		if (sdb[i] == Math.max.apply(null, sdb)) {
@@ -327,16 +343,17 @@ function tjn() {
 	}
 }
 
-function bcn(tme, nme, a, b, c, d, e, f, g) {
+function bcn(tme, nme, a, b, c, d, e, f, g, z) {
 	var a = tme.split(":");
 	a[0] = Number(a[0]).toString();
 	a = a.join(":");
-	document.getElementById("naozhong").innerHTML += ('<div class="box"><div class="lte"><input type="checkbox" class="cbx" checked="checked"/><button onclick="dbx(this\
+	document.getElementById("naozhong").innerHTML += ('<div class="box sct' + z + '"><div class="lte"><input type="checkbox" class="cbx" /><button onclick="dbx(this\
 		.parentNode.parentNode)" class="ltb fan">删除</button><span class="tmd">' + a + '</span><br /><span></span><br /><span class="hel">' + nme +
 		'</span><div class="sma"><button style="border-color:' + a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c +
 		'">二</button><button style="border-color:' + d + '">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f +
 		'">五</button><button style="border-color:' + g + '">六</button></div></div></div>');
 	document.getElementById("xnz").style.display = "none";
+	document.getElementsByClassName("cbx")[document.getElementsByClassName("cbx").length - 1].checked = true;
 }
 
 function ccl(cle) {
@@ -345,9 +362,9 @@ function ccl(cle) {
 		document.getElementById("cfn").checked = "checked";
 	} else {
 		cle.style.borderColor = "gray";
-		for (var x = 0; x < document.getElementsByClassName("sma")[1].getElementsByTagName("button").length; x++) {
-			if (document.getElementsByClassName("sma")[1].getElementsByTagName("button")[x].style.borderColor != "gray" && document.getElementsByClassName("sma")[1]
-				.getElementsByTagName("button")[x].style.borderColor != "") return;
+		for (var x = 0; x < 7; x++) {
+			if (document.getElementById("xnz").getElementsByClassName("sma")[0].getElementsByTagName("button")[x].style.borderColor != "gray" && document
+				.getElementById("xnz").getElementsByClassName("sma")[0].getElementsByTagName("button")[x].style.borderColor != "") return;
 		}
 		document.getElementById("cfn").checked = "";
 	}

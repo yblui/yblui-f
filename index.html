@@ -1,4 +1,3 @@
-<!--暂停时间，闹钟，世界时钟-->
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +70,39 @@
 		</div>
 	</div>
 	<div id="naozhong">
-		<div class="box">
+		<div class="dlg" id="xnz">
+			<h2>添加新闹钟</h2>
+			<div class="etm">
+				<span contenteditable="true">07</span>:<span contenteditable="true">00</span>
+			</div>
+			<input type="text" value="闹钟(1)" />
+			<label>
+				<input type="checkbox" id="cfn" />重复闹钟
+			</label>
+			<br />
+			<div class="sma">
+				<button onclick="ccl(this)">日</button><button onclick="ccl(this)">一</button><button onclick="ccl(this)">二</button><button onclick="ccl(this)">三
+					</button><button onclick="ccl(this)">四</button><button onclick="ccl(this)">五</button><button onclick="ccl(this)">六</button>
+			</div>
+			暂停时间 <select id="sct">
+				<option>已禁用</option>
+				<option>5分钟</option>
+				<option selected="selected">10分钟</option>
+				<option>20分钟</option>
+				<option>30分钟</option>
+				<option>1小时</option>
+			</select>
+			<br />
+			<button class="blb fan" onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this
+				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
+				.getElementsByTagName('button')[1].style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[2]
+				.style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[3].style.borderColor,this
+				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[4].style.borderColor,this.parentNode
+				.getElementsByClassName('sma')[0].getElementsByTagName('button')[5].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
+				.getElementsByTagName('button')[6].style.borderColor, document.getElementById('sct').selectedIndex);">保存</button>
+			<button class="fan" onclick="document.getElementById('xnz').style.display = 'none';">取消</button>
+		</div>
+		<div class="box sct2">
 			<div class="lte">
 				<input type="checkbox" class="cbx" />
 				<button onclick="dbx(this.parentNode.parentNode)" class="ltb fan">删除</button>
@@ -89,38 +120,6 @@
 		</div>
 		<div class="opt">
 			<button class="fan" onclick="ted()" id="nze">编辑闹钟</button><button class="blb fan" onclick="tjn();" id="nzf">添加闹钟</button>
-		</div>
-		<div class="dlg" id="xnz">
-			<h2>添加新闹钟</h2>
-			<div class="etm">
-				<span contenteditable="true">07</span>:<span contenteditable="true">00</span>
-			</div>
-			<input type="text" value="闹钟(1)" />
-			<label>
-				<input type="checkbox" id="cfn" />重复闹钟
-			</label>
-			<br />
-			<div class="sma">
-				<button onclick="ccl(this)">日</button><button onclick="ccl(this)">一</button><button onclick="ccl(this)">二</button><button onclick="ccl(this)">三
-					</button><button onclick="ccl(this)">四</button><button onclick="ccl(this)">五</button><button onclick="ccl(this)">六</button>
-			</div>
-			暂停时间 <select>
-				<option>已禁用</option>
-				<option>5分钟</option>
-				<option>10分钟</option>
-				<option>20分钟</option>
-				<option>30分钟</option>
-				<option>1小时</option>
-			</select>
-			<br />
-			<button class="blb fan" onclick="bcn(this.parentNode.getElementsByClassName('etm')[0].innerText, this.parentNode.getElementsByTagName('input')[0].value, this
-				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[0].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
-				.getElementsByTagName('button')[1].style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[2]
-				.style.borderColor,this.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[3].style.borderColor,this
-				.parentNode.getElementsByClassName('sma')[0].getElementsByTagName('button')[4].style.borderColor,this.parentNode
-				.getElementsByClassName('sma')[0].getElementsByTagName('button')[5].style.borderColor,this.parentNode.getElementsByClassName('sma')[0]
-				.getElementsByTagName('button')[6].style.borderColor);">保存</button>
-			<button class="fan" onclick="document.getElementById('xnz').style.display = 'none';">取消</button>
 		</div>
 	</div>
 	<div id="shijieshizhong">
