@@ -17,6 +17,10 @@ var ysj = {
 	'5分钟': 300000,
 	'10分钟': 600000
 };
+var tui = {
+	"早上好": 3600001
+}
+var tda = [0, 300000, 600000, 1200000, 1800000, 3600000];
 var cities = [
 	"北京，中国", "成都，中国", "大理，中国", "大连，中国", "广州，中国", "哈尔滨，中国", "杭州，中国", "拉萨，中国", "南京，中国", "青岛，中国", "厦门，中国", "上海，中国",
 	"深圳，中国", "沈阳，中国", "苏州，中国", "阿尔伯克基，新墨西哥州，美国", "阿卡迪亚，加利福尼亚州，美国", "阿克伦，俄亥俄州，美国", "阿灵顿，弗吉尼亚州，美国",
@@ -36,14 +40,15 @@ var cities = [
 	"墨尔本，维多利亚，澳大利亚", "纽卡斯尔，澳大利亚", "珀斯，西澳大利亚，澳大利亚", "悉尼，新南威尔士，澳大利亚", "巴西利亚，巴西", "阿雷格里港，巴西", "贝洛哈里桑塔，巴西",
 	"福塔雷萨，巴西", "坎皮纳斯，巴西", "库里提巴，巴西", "库亚巴，巴西", "累西腓，巴西", "里约布兰科，巴西", "里约热内卢，巴西", "马瑙斯，巴西", "纳塔尔，巴西", "萨尔瓦多，巴西",
 	"桑托斯，巴西", "圣保罗，巴西", "埃德蒙顿，阿尔伯达省，加拿大", "奥沙瓦，安大略省，加拿大", "多伦多，安大略省，加拿大", "哈利法克斯，新斯科舍省，加拿大",
-	"赫尔，魁北克省，加拿大", "怀特霍斯，育空地区，加拿大"
+	"赫尔，魁北克省，加拿大", "怀特霍斯，育空地区，加拿大", "基洛纳，不列颠哥伦比亚省，加拿大", "卡尔加里，阿尔伯达省，加拿大", "魁北克市，魁北克省，加拿大",
+	"里贾纳，萨斯喀彻温省，加拿大", "蒙特利尔，魁北克省，加拿大", "米西索加，安大略省，加拿大", "尼亚加拉瀑布城，安大略省，加拿大", "纽芬兰，加拿大", "萨斯喀彻温，加拿大"
 ];
 var oct = [];
 var dif = [
 	8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, -6, -7, -4, -4, -4, -5, -7, -5, -6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -4, 1, 1, 12, 6, 3, 10, 2, 12, 7, 11, 3, 3, 11,
 	4, 3, 5, 3, 8, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 5.5, 9, 6, 6, 6.5, 6.5, 6.5, 6.5, 5.75, 7, 7, 7, 6, 6, 5, 4.5, 5, 5, 5, 5, 5, 5, 5, 7, 9, 9, 9, 9, 9, 9,
 	9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 9.5, 10, 9.5, 10, 10, 10, 10, 10, 8, 10, -3, -3, -3, -3, -3, -3, -4,
-	-3, -5, -3, -4, -3, -3, -3, -3, -6, -4, -4, -3, -3, -7
+	-3, -5, -3, -4, -3, -3, -3, -3, -6, -4, -4, -3, -3, -7, -7, -6, -4, -6, -4, -4, -4, -3, -6
 ];
 setInterval(function () {
 	var a = new Date().getHours();
@@ -91,15 +96,29 @@ setInterval(function () {
 					.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "gray" || !chl(p))) {
 			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b><br/>\
 				推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>\
-				</select><button class="wib">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
+				</select><button class="wib" onclick="chi(document.getElementsByClassName(\'hel\')[' + p + ' - 1], this);">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
 			document.getElementsByClassName("slc")[document.getElementsByClassName("slc").length - 1].getElementsByTagName("option")[Number(document
 				.getElementsByClassName("lte")[p - 1].parentNode.classList[1][3])].selected = "selected";
 			ifmy = 60000;
 			if (!chl(p)) document.getElementsByClassName("cbx")[p - 1].checked = "";
 		}
+		if (tui[document.getElementsByClassName("hel")[p - 1].innerText] != 3600001) tui[document.getElementsByClassName("hel")[p - 1].innerText] -= 10;
+		if (tui[document.getElementsByClassName("hel")[p - 1].innerText] <= 0) {
+			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b><br/>\
+			推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>\
+			</select><button class="wib" onclick="chi(document.getElementsByClassName(\'hel\')[' + p + ' - 1], this);">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
+			document.getElementsByClassName("slc")[document.getElementsByClassName("slc").length - 1].getElementsByTagName("option")[Number(document
+				.getElementsByClassName("lte")[p - 1].parentNode.classList[1][3])].selected = "selected";
+			tui[document.getElementsByClassName("hel")[p - 1].innerText] = 3600001;
+		}
 	}
 	ifmy -= 10;
 }, 10);
+
+function chi(a, b) {
+	tui[a.innerText] = tda[b.parentNode.getElementsByTagName('select')[0].selectedIndex];
+	xch(b);
+}
 
 function chl(xp) {
 	for (var lxp = 0; lxp < 7; lxp++) {
@@ -354,6 +373,7 @@ function bcn(tme, nme, a, b, c, d, e, f, g, z) {
 		'">五</button><button style="border-color:' + g + '">六</button></div></div></div>');
 	document.getElementById("xnz").style.display = "none";
 	document.getElementsByClassName("cbx")[document.getElementsByClassName("cbx").length - 1].checked = true;
+	tui[nme] = 3600001;
 }
 
 function ccl(cle) {

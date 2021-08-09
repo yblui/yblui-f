@@ -326,10 +326,11 @@ input[type="checkbox"] {
 	width: 400px;
 	padding: 9px;
 	z-index: 100;
+	background-color: rgba(194, 194, 194, 0.7);
 }
 
-.fdo, .fdo * {
-	background-color: #c2c2c2;
+.fdo * {
+	background-color: transparent;
 }
 
 .wib {
