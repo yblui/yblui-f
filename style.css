@@ -63,13 +63,14 @@ html, body {
 	margin: 0;
 }
 
-#fcb {
+#fcb, button[onclick="jfc(this);"] {
 	width: 40px;
 	height: 40px;
 	margin-left: calc(100% - 40px);
 	border-radius: 3px;
 	margin-right: 0;
 	background-color: transparent;
+	float:right
 }
 
 button {
@@ -178,6 +179,7 @@ h1, h2, #ttr th {
 	padding: 9px;
 	border-radius: 3px;
 	box-shadow: 0px 0px 9px lightgray;
+	min-width: 200px;
 }
 
 .box, .box *, .box * *, input[type="radio"]:checked, .dlg h2, .dlg div, .dlg span, .dlg label, .ilk, .dlg, .box .lte span, .box .cte span, input[type="text"] {
@@ -188,7 +190,7 @@ h1, h2, #ttr th {
 	background-color: #c2c2c2;
 }
 
-.box .cte button:enabled:hover, #fcb:hover, button:enabled:hover, p[id]:hover {
+.box .cte button:enabled:hover, #fcb:hover, button:enabled:hover, p[id]:hover, button[onclick="jfc(this);"]:hover {
 	background-color: #dadada;
 }
 
@@ -343,4 +345,8 @@ input[type="checkbox"] {
 	height: 70px;
 	width: 150px;
 	border-radius: 0;
+}
+
+button[onclick="jfc(this);"]{
+	margin:0
 }
