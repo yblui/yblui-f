@@ -131,7 +131,8 @@ function chl(xp) {
 function da() {
 	if (!std) {
 		std = true;
-		document.getElementById("bta").innerHTML = "&#xe807;";
+		document.getElementById("bta").classList.remove("i-play");
+		document.getElementById("bta").classList.add("i-pause");
 		document.getElementById("btb").disabled = "";
 		document.getElementById("btc").disabled = "";
 		var dte = new Date();
@@ -162,7 +163,8 @@ function da() {
 			}
 		}, 10)
 	} else {
-		document.getElementById("bta").innerHTML = "&#xe801;";
+		document.getElementById("bta").classList.remove("i-pause");
+		document.getElementById("bta").classList.add("i-play");
 		sin = clearInterval(sin);
 		std = false;
 		document.getElementById("btb").disabled = "disabled";
@@ -215,14 +217,16 @@ function dc() {
 function fsc() {
 	if (bfs) {
 		document.exitFullscreen();
-		document.getElementById("fcb").innerHTML = "&#xe800;";
+		document.getElementById("fcb").classList.remove("i-resize-small");
+		document.getElementById("fcb").classList.add("i-resize-full");
 		document.getElementById("btb").style.display = "inline";
 		document.getElementById("tbl").style.display = "";
 		bfs = false;
 		document.getElementById("div").style.fontSize = "70pt";
 	} else {
 		document.getElementById("miaobiao").requestFullscreen();
-		document.getElementById("fcb").innerText = "还原";
+		document.getElementById("fcb").classList.add("i-resize-small");
+		document.getElementById("fcb").classList.remove("i-resize-full");
 		document.getElementById("btb").style.display = "none";
 		document.getElementById("tbl").style.display = "none";
 		bfs = true;
@@ -249,8 +253,9 @@ function tun(ltm) {
 }
 
 function stt(sti) {
-	if (document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerHTML == "") {
-		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerHTML = "&#xe807;";
+	if (document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[1].classList.contains("i-play")) {
+		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[1].classList.remove("i-play");
+		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[1].classList.add("i-pause");
 		counting[sti] = new Date();
 		var vli = document.getElementById("j" + sti).innerText.split(":");
 		var dlo = vli[0] * 3600000 + vli[1] * 60000 + vli[2] * 1000;
@@ -262,8 +267,9 @@ function stt(sti) {
 					if (counting[i] != 0) {
 						fda = new Date();
 						if ((jso[i] - (fda - counting[i])) <= 0) {
-							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].innerHTML = "";
-							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "disabled";
+							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[1].classList.remove("i-pause");
+							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[1].classList.add("i-play");
+							document.getElementById("j" + i).parentNode.parentNode.getElementsByTagName("button")[1].disabled = "disabled";
 							counting[i] = 0;
 							return;
 						}
@@ -279,7 +285,8 @@ function stt(sti) {
 			}, 10)
 		}
 	} else {
-		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[0].innerHTML = "&#xe801;";
+		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[1].classList.remove("i-pause");
+		document.getElementById("j" + sti).parentNode.parentNode.getElementsByTagName("button")[1].classList.add("i-play");
 		counting[sti] = 0;
 	}
 }
@@ -295,7 +302,8 @@ function rst(rsi) {
 	czs = czs.join("");
 	document.getElementById("j" + rsi).innerText = czs;
 	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByTagName("button")[0].disabled = "";
-	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByClassName("blb")[0].innerHTML = "&#xe801;";
+	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByClassName("blb")[0].classList.remove("i-pause");
+	document.getElementById("j" + rsi).parentNode.parentNode.getElementsByClassName("blb")[0].classList.add("i-play");
 }
 
 function sve(nam, tim) {
@@ -303,9 +311,9 @@ function sve(nam, tim) {
 	tim = tim.split(":");
 	if (tim[0].length != 2 || tim[1].length != 2 || tim[2].length != 2) return;
 	tim = tim.join(":");
-	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<button onclick="jfc(this);">展开</button><div class="cte"><span id="j' + nam + '">' + tim +
-		'</span></div><div class="cte"><button onclick="stt(\'' + nam + '\')" class="blb">开始</button><button onclick="rst(\'' + nam +
-		'\')">重置</button></div>');
+	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<button onclick="jfc(this);" class="i-resize-full"></button><div class="cte"><span id="j' + nam + '">' + tim +
+		'</span></div><div class="cte"><button onclick="stt(\'' + nam + '\')" class="blb i-play"></button><button onclick="rst(\'' + nam +
+		'\')" class="i-ccw"></button></div>');
 	tim = tim.split(":");
 	jso[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
 	ysj[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
@@ -313,19 +321,21 @@ function sve(nam, tim) {
 }
 
 function jfc(jft) {
-	if (jft.innerHTML == "") {
-		jft.parentNode.parentNode.requestFullscreen();
-		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontSize = "60pt";
-		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontWeight = "100";
-		jft.innerHTML = "";
-	} else if (jft.innerHTML == "") {
+	if (jft.classList.contains("i-resize-full")) {
+		jft.parentNode.requestFullscreen();
+		jft.parentNode.getElementsByTagName("span")[0].style.fontSize = "60pt";
+		jft.parentNode.getElementsByTagName("span")[0].style.fontWeight = "100";
+		jft.classList.remove("i-resize-full");
+		jft.classList.add("i-resize-small")
+	} else if (jft.classList.contains("i-resize-small")) {
 		document.exitFullscreen();
-		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontSize = "30pt";
-		jft.parentNode.parentNode.getElementsByTagName("span")[0].style.fontWeight = "500";
-		jft.innerHTML = "";
+		jft.parentNode.getElementsByTagName("span")[0].style.fontSize = "30pt";
+		jft.parentNode.getElementsByTagName("span")[0].style.fontWeight = "500";
+		jft.classList.remove("i-resize-small");
+		jft.classList.add("i-resize-full");
 	} else {
 		document.getElementById("jishiqi").removeChild(jft.parentNode);
-		jso[jft.parentNode.parentNode.getElementsByTagName("span")[0].id.replace("j", "")] = null;
+		jso[jft.parentNode.getElementsByTagName("span")[0].id.replace("j", "")] = null;
 	}
 }
 
@@ -338,26 +348,27 @@ function edt() {
 }
 
 function adj() {
-	if (document.getElementById("tjj").innerHTML == " 添加新计时器") {
+	if (document.getElementById("tjj").innerHTML == "添加新计时器") {
 		document.getElementById('add').style.display = 'block';
 	} else {
 		for (var m = 0; m < document.getElementById("jishiqi").getElementsByClassName("box").length; m++) {
-			document.getElementById("jishiqi").getElementsByClassName("box")[m].getElementsByTagName("button")[2].innerHTML = "";
+			document.getElementById("jishiqi").getElementsByClassName("box")[m].getElementsByTagName("button")[2].classList.remove("i-resize-small");
+			document.getElementById("jishiqi").getElementsByClassName("box")[m].getElementsByTagName("button")[2].classList.add("i-resize-full");
 		}
 		document.getElementById("bjj").style.display = "inline";
-		document.getElementById("tjj").innerHTML = " 添加新计时器";
+		document.getElementById("tjj").innerHTML = "添加新计时器";
 	}
 }
 
 function tjn() {
-	if (document.getElementById("nzf").innerHTML == " 添加闹钟") {
+	if (document.getElementById("nzf").innerHTML == "添加闹钟") {
 		document.getElementById('xnz').style.display = 'block';
 	} else {
 		for (var n = 0; n < document.getElementsByClassName("ltb").length; n++) {
 			document.getElementsByClassName("cbx")[n].style.display = "inline";
 			document.getElementsByClassName("ltb")[n].style.display = "none";
 		}
-		document.getElementById("nzf").innerHTML = " 添加闹钟";
+		document.getElementById("nzf").innerHTML = "添加闹钟";
 		document.getElementById("nze").style.display = "inline";
 	}
 }
@@ -404,7 +415,7 @@ function ted() {
 }
 
 function adc() {
-	if (document.getElementById("cac").innerHTML == " 添加新城市") {
+	if (document.getElementById("cac").innerHTML == "添加新城市") {
 		document.getElementById("search").style.display = "block";
 	} else {
 		for (var x = 0; x < (document.getElementById("shijieshizhong").getElementsByClassName("fan").length - 3); x++) {
@@ -414,7 +425,7 @@ function adc() {
 		}
 		document.getElementById("cpr").style.display = "inline";
 		document.getElementById("ced").style.display = "inline";
-		document.getElementById("cac").innerHTML = " 添加新城市";
+		document.getElementById("cac").innerHTML = "添加新城市";
 		document.getElementById("hde").style.display = "none";
 	}
 }
@@ -441,8 +452,8 @@ function aci(act) {
 	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><button class="fan" onclick="dee(this.parentNode)">删除</button>\
 		<span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div></div>';
 	document.getElementById("hde").innerHTML += '<div class="box vrg" id="cpa' + act + '"><div><b>' + cities[act] + '</b><br /><span class="rqj"></span></div><button\
-		onclick="rev()" class="fan nrt">&#xf104;</button><table><tr class="duy"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\
-		</table><button onclick="ext()" class="fan nrt">&#xf105;</button></div>';
+		onclick="rev()" class="fan nrt i-angle-left"></button><table><tr class="duy"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\
+		</table><button onclick="ext()" class="fan nrt i-angle-right"></button></div>';
 	oct[oct.length] = act;
 }
 

@@ -18,40 +18,40 @@
 		<p id="naz" onclick="sel('naz');">闹钟</p>
 		<p id="sjz" onclick="sel('sjz');">世界时钟</p>
 		<p id="mib" class="sld" onclick="sel('mib');">秒表</p>
-		<p id="set" onclick="sel('set');" title="设置">&#xe806;</p>
+		<p id="set" onclick="sel('set');" title="设置" class="i-cog"></p>
 	</div>
 	<div id="jishiqi">
 		<div class="box">
-			1分钟<button onclick="jfc(this);" title="展开">&#xe800;</button>
+			1分钟<button onclick="jfc(this);" title="展开" class="i-resize-full"></button>
 			<div class="cte"><span id="j1分钟">00:01:00</span></div>
 			<div class="cte">
-				<button onclick="stt('1分钟');" class="blb" title="开始">&#xe801;</button><button onclick="rst('1分钟');" title="重置">&#xe802;</button>
+				<button onclick="stt('1分钟');" class="blb i-play" title="开始"></button><button onclick="rst('1分钟');" title="重置" class="i-ccw"></button>
 			</div>
 		</div>
 		<div class="box">
-			3分钟<button onclick="jfc(this);" title="展开">&#xe800;</button>
+			3分钟<button onclick="jfc(this);" title="展开" class="i-resize-full"></button>
 			<div class="cte"><span id="j3分钟">00:03:00</span></div>
 			<div class="cte">
-				<button onclick="stt('3分钟');" class="blb" title="开始">&#xe801;</button><button onclick="rst('3分钟');" title="重置">&#xe802;</button>
+				<button onclick="stt('3分钟');" class="blb i-play" title="开始"></button><button onclick="rst('3分钟');" title="重置" class="i-ccw"></button>
 			</div>
 		</div>
 		<div class="box">
-			5分钟<button onclick="jfc(this);" title="展开">&#xe800;</button>
+			5分钟<button onclick="jfc(this);" title="展开" class="i-resize-full"></button>
 			<div class="cte"><span id="j5分钟">00:05:00</span></div>
 			<div class="cte">
-				<button onclick="stt('5分钟');" class="blb" title="开始">&#xe801;</button><button onclick="rst('5分钟');" title="重置">&#xe802;</button>
+				<button onclick="stt('5分钟');" class="blb i-play" title="开始"></button><button onclick="rst('5分钟');" title="重置" class="i-ccw"></button>
 			</div>
 		</div>
 		<div class="box">
-			10分钟<button onclick="jfc(this);" title="展开">&#xe800;</button>
+			10分钟<button onclick="jfc(this);" title="展开" class="i-resize-full"></button>
 			<div class="cte"><span id="j10分钟">00:10:00</span></div>
 			<div class="cte">
-				<button onclick="stt('10分钟');" class="blb" title="开始">&#xe801;</button><button onclick="rst('10分钟');" title="重置">&#xe802;</button>
+				<button onclick="stt('10分钟');" class="blb i-play" title="开始"></button><button onclick="rst('10分钟');" title="重置" class="i-ccw"></button>
 			</div>
 		</div>
 		<div class="opt">
-			<button id="bjj" class="fan" onclick="edt();" title="编辑计时器">&#xe804;</button><button onclick="adj();" id="tjj"
-				class="blb fan">&#xe803; 添加新计时器</button>
+			<button id="bjj" class="fan i-pencil" onclick="edt();" title="编辑计时器"></button><button onclick="adj();" id="tjj"
+				class="blb fan i-plus">添加新计时器</button>
 		</div>
 		<div id="add" class="dlg">
 			<h2>添加新计时器</h2>
@@ -117,13 +117,13 @@
 			</div>
 		</div>
 		<div class="opt">
-			<button class="fan" onclick="ted();" id="nze" title="编辑闹钟">&#xe804;</button><button class="blb fan" onclick="tjn();" id="nzf">&#xe803; 添加闹钟</button>
+			<button class="fan i-pencil" onclick="ted();" id="nze" title="编辑闹钟"></button><button class="blb fan i-plus" onclick="tjn();" id="nzf">添加闹钟</button>
 		</div>
 	</div>
 	<div id="shijieshizhong">
 		<div class="opt">
-			<button class="fan" id="cpr" onclick="cmp();">比较</button><button class="fan" onclick="hdt();"
-				id="ced" title="编辑时钟">&#xe804;</button><button class="blb fan" onclick="adc();" id="cac">&#xe803; 添加新城市</button>
+			<button class="fan" id="cpr" onclick="cmp();">比较</button><button class="fan i-pencil" onclick="hdt();"
+				id="ced" title="编辑时钟"></button><button class="blb fan i-plus" onclick="adc();" id="cac">添加新城市</button>
 		</div>
 		<div id="search">
 			<input type="text" placeholder="输入地点" id="epl" onkeyup="srh(this.value);" />
@@ -145,7 +145,7 @@
 					<br />
 					<span id="wdu" class="rqj"></span>
 				</div>
-				<button onclick="rev();" class="fan nrt">&#xf104;</button>
+				<button onclick="rev();" class="fan nrt i-angle-left"></button>
 				<table>
 					<tr id="vgo">
 						<td></td>
@@ -159,18 +159,18 @@
 						<td></td>
 					</tr>
 				</table>
-				<button onclick="ext();" class="fan nrt">&#xf105;</button>
+				<button onclick="ext();" class="fan nrt i-angle-right"></button>
 			</div>
 		</div>
 	</div>
 	<div id="miaobiao">
-		<button onclick="fsc();" id="fcb" title="展开">&#xe800;</button>
+		<button onclick="fsc();" id="fcb" title="展开" class="i-resize-full"></button>
 		<div id="div">
 			<span id="a">00</span>:<span id="b">00</span>:<span id="c">00</span>.<span id="d">00</span>
 		</div>
-		<button onclick="da();" id="bta" class="blb" title="开始">&#xe801;</button>
-		<button onclick="db();" id="btb" disabled="disabled" title="计次">&#xe805;</button>
-		<button onclick="dc();" id="btc" disabled="disabled" title="重置">&#xe802;</button>
+		<button onclick="da();" id="bta" class="blb i-play" title="开始"></button>
+		<button onclick="db();" id="btb" disabled="disabled" title="计次" class="i-flag"></button>
+		<button onclick="dc();" id="btc" disabled="disabled" title="重置" class="i-ccw"></button>
 		<br />
 		<table id="tbl" cellspacing="0">
 			<tr id="ttr">
