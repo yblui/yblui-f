@@ -303,6 +303,8 @@ input[type="checkbox"] {
 	overflow-y: auto;
 	width: 60%;
 	right: 20%;
+	-webkit-border-vertical-spacing: 0;
+	-webkit-border-horizontal-spacing: 0;
 }
 
 #vgo td, .duy td {
