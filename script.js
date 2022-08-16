@@ -58,7 +58,7 @@ setInterval(function () {
 	document.getElementById("lct").innerText = c + ":" + d;
 	document.getElementById("wdt").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
 	document.getElementById("wdu").innerText = new Date().getFullYear() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getDate();
-	for (var y = 0; y < oct.length; y++) {
+	for (y = 0; y < oct.length; y++) {
 		var i = Number(new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate(), a, b, 0, 0)) + 3600000 * (dif[oct[y]] + new Date()
 			.getTimezoneOffset() / 60);
 		c = new Date(i).getHours();
@@ -91,12 +91,12 @@ setInterval(function () {
 		document.getElementsByClassName("lte")[p - 1].getElementsByTagName("span")[1].innerText = mi + "天" + (ltp - ltp % 3600000) / 3600000 + "小时" + (ltp - (ltp - ltp
 			% 3600000) - ltp % 60000) / 60000 + "分钟内";
 		if (lp[0] * 3600000 + lp[1] * 60000 == new Date().getHours() * 3600000 + new Date().getMinutes() * 60000 && document.getElementById("naozhong").innerHTML
-			.indexOf('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</strong>') == -1 && document.getElementsByClassName("cbx")[p - 1]
+			.indexOf('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b>') == -1 && document.getElementsByClassName("cbx")[p - 1]
 				.checked && ifmy < 0 && (document.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "" || document
 					.getElementsByClassName("sma")[p].getElementsByTagName("button")[new Date().getDay()].style.borderColor != "gray" || !chl(p))) {
-			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</strong><br/>' +
-				'推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>' +
-				'</select><button class="wib" onclick="chi(document.getElementsByClassName(\'hel\')[' + p + ' - 1], this);">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
+			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b><br/>\
+				推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>\
+				</select><button class="wib" onclick="chi(document.getElementsByClassName(\'hel\')[' + p + ' - 1], this);">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
 			document.getElementsByClassName("slc")[document.getElementsByClassName("slc").length - 1].getElementsByTagName("option")[Number(document
 				.getElementsByClassName("lte")[p - 1].parentNode.classList[1][3])].selected = "selected";
 			ifmy = 60000;
@@ -104,9 +104,9 @@ setInterval(function () {
 		}
 		if (tui[document.getElementsByClassName("hel")[p - 1].innerText] != 3600001) tui[document.getElementsByClassName("hel")[p - 1].innerText] -= 10;
 		if (tui[document.getElementsByClassName("hel")[p - 1].innerText] <= 0) {
-			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</strong><br/>' +
-				'推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>' +
-				'</select><button class="wib" onclick="chi(document.getElementsByClassName(\'hel\')[' + p + ' - 1], this);">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
+			document.getElementById("naozhong").innerHTML += ('<div class="fdo"><b class="nzn">' + document.getElementsByClassName("hel")[p - 1].innerText + '</b><br/>\
+			推迟时间为<select class="slc"><option>已禁用</option><option>5分钟</option><option>10分钟</option><option>20分钟</option><option>30分钟</option><option>1小时</option>\
+			</select><button class="wib" onclick="chi(document.getElementsByClassName(\'hel\')[' + p + ' - 1], this);">推迟</button><button class="wib" onclick="xch(this)">消除</button></div>');
 			document.getElementsByClassName("slc")[document.getElementsByClassName("slc").length - 1].getElementsByTagName("option")[Number(document
 				.getElementsByClassName("lte")[p - 1].parentNode.classList[1][3])].selected = "selected";
 			tui[document.getElementsByClassName("hel")[p - 1].innerText] = 3600001;
@@ -172,8 +172,8 @@ function da() {
 function db() {
 	tfd = Number(document.getElementById("a").innerText) * 3600000 + Number(document.getElementById("b").innerText) * 60000 + Number(document.getElementById("c")
 		.innerText) * 1000 + Number(document.getElementById("d").innerText) * 10;
-	str = ((tfd - tfb) - (tfd - tfb) % 3600000) / 3600000 + ":" + ((((tfd - tfb) - (tfd - tfb) % 60000) / 60000) % 60) + ":" + ((((tfd - tfb) - (tfd - tfb) % 1000) /
-		1000) % 60) + "." + ((((tfd - tfb) - (tfd - tfb) % 10) / 10) % 100);
+	str = ((tfd - tfb) - (tfd - tfb) % 3600000) / 3600000 + ":" + ((((tfd - tfb) - (tfd - tfb) % 60000) / 60000) % 60) + ":" + (((((tfd - tfb) - (tfd - tfb) % 1000) /
+		1000) % 60)) + "." + (((((tfd - tfb) - (tfd - tfb) % 10) / 10) % 100));
 	str = str.split("");
 	if (str[1] == ":") str.splice(0, 0, "0");
 	if (str[4] == ":") str.splice(3, 0, "0");
@@ -222,8 +222,7 @@ function fsc() {
 		document.getElementById("div").style.fontSize = "70pt";
 	} else {
 		document.getElementById("miaobiao").requestFullscreen();
-		document.getElementById("fcb").classList.add("i-resize-small");
-		document.getElementById("fcb").classList.remove("i-resize-full");
+		document.getElementById("fcb").innerText = "还原";
 		document.getElementById("btb").style.display = "none";
 		document.getElementById("tbl").style.display = "none";
 		bfs = true;
@@ -233,7 +232,7 @@ function fsc() {
 
 function sel(sle) {
 	for (var i = 0; i <= 4; i++) {
-		document.getElementById(["jsq", "naz", "sjz", "mib", "set"][i]).classList.remove("sld");
+		document.getElementById(["jsq", "naz", "sjz", "mib", "set"][i]).className = "";
 		document.getElementById(["jishiqi", "naozhong", "shijieshizhong", "miaobiao", "shezhi"][i]).style.display = "none";
 		if (sle == ["jsq", "naz", "sjz", "mib", "set"][i]) mbs = i;
 	}
@@ -304,9 +303,9 @@ function sve(nam, tim) {
 	tim = tim.split(":");
 	if (tim[0].length != 2 || tim[1].length != 2 || tim[2].length != 2) return;
 	tim = tim.join(":");
-	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<button onclick="jfc(this);" class="i-resize-full"></button><div class="cte"><span id="j' + nam + '">' + tim +
-		'</span></div><div class="cte"><button onclick="stt(\'' + nam + '\')" class="blb i-play"></button><button onclick="rst(\'' + nam +
-		'\')" class="i-ccw"></button></div>');
+	document.getElementById("jishiqi").innerHTML += ('<div class="box">' + nam + '<div class="cte"><span id="j' + nam + '">' + tim +
+		'</span></div><div class="cte"><button onclick="stt(\'' + nam + '\')" class="blb">开始</button><button onclick="rst(\'' + nam +
+		'\')">重置</button><button onclick="jfc(this);">展开</button></div>');
 	tim = tim.split(":");
 	jso[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
 	ysj[nam] = tim[0] * 3600000 + tim[1] * 60000 + tim[2] * 1000;
@@ -326,13 +325,13 @@ function jfc(jft) {
 		jft.innerText = "展开";
 	} else {
 		document.getElementById("jishiqi").removeChild(jft.parentNode);
-		jso[jft.parentNode.getElementsByTagName("span")[0].id.replace("j", "")] = null;
+		jso[jft.parentNode.parentNode.getElementsByTagName("span")[0].id.replace("j", "")] = null;
 	}
 }
 
 function edt() {
-	for (var z of z < document.getElementById("jishiqi").getElementsByClassName("box")) {
-		z.getElementsByTagName("button")[2].innerText = "删除";
+	for (var z = 0; z < document.getElementById("jishiqi").getElementsByClassName("box").length; z++) {
+		document.getElementById("jishiqi").getElementsByClassName("box")[z].getElementsByTagName("button")[2].innerText = "删除";
 		document.getElementById("bjj").style.display = "none";
 		document.getElementById("tjj").innerText = "完成";
 	}
@@ -367,8 +366,8 @@ function bcn(tme, nme, a, b, c, d, e, f, g, z) {
 	var a = tme.split(":");
 	a[0] = Number(a[0]).toString();
 	a = a.join(":");
-	document.getElementById("naozhong").innerHTML += ('<div class="box sct' + z + '"><div class="lte"><input type="checkbox" class="cbx" /><button onclick="dbx(this' +
-		'.parentNode.parentNode)" class="ltb fan">删除</button><span class="tmd">' + a + '</span><br /><span></span><br /><span class="hel">' + nme +
+	document.getElementById("naozhong").innerHTML += ('<div class="box sct' + z + '"><div class="lte"><input type="checkbox" class="cbx" /><button onclick="dbx(this\
+		.parentNode.parentNode)" class="ltb fan">删除</button><span class="tmd">' + a + '</span><br /><span></span><br /><span class="hel">' + nme +
 		'</span><div class="sma"><button style="border-color:' + a + '">日</button><button style="border-color:' + b + '">一</button><button style="border-color:' + c +
 		'">二</button><button style="border-color:' + d + '">三</button><button style="border-color:' + e + '">四</button><button style="border-color:' + f +
 		'">五</button><button style="border-color:' + g + '">六</button></div></div></div>');
@@ -405,7 +404,7 @@ function ted() {
 }
 
 function adc() {
-	if (document.getElementById("cac").innerHTML == "添加新城市") {
+	if (document.getElementById("cac").innerText == "添加新城市") {
 		document.getElementById("search").style.display = "block";
 	} else {
 		for (var x = 0; x < (document.getElementById("shijieshizhong").getElementsByClassName("fan").length - 3); x++) {
@@ -439,11 +438,11 @@ function srh(srt) {
 }
 
 function aci(act) {
-	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><button class="fan" onclick="dee(this.parentNode)">删除</button>' +
-		'<span class="fsj"></span><div class="ilk"><strong>' + cities[act] + '</strong><br /><span class="rqj"></span></div></div>';
-	document.getElementById("hde").innerHTML += '<div class="box vrg" id="cpa' + act + '"><div><strong>' + cities[act] + '</strong><br /><span class="rqj"></span></div><button' +
-		'onclick="rev()" class="fan nrt i-angle-left"></button><table><tr class="duy"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>' +
-		'</table><button onclick="ext()" class="fan nrt i-angle-right"></button></div>';
+	document.getElementById("shijieshizhong").innerHTML += '<div class="box vrg" id="city' + act + '"><button class="fan" onclick="dee(this.parentNode)">删除</button>\
+		<span class="fsj"></span><div class="ilk"><b>' + cities[act] + '</b><br /><span class="rqj"></span></div></div>';
+	document.getElementById("hde").innerHTML += '<div class="box vrg" id="cpa' + act + '"><div><b>' + cities[act] + '</b><br /><span class="rqj"></span></div><button\
+		onclick="rev()" class="fan nrt">向前</button><table><tr class="duy"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\
+		</table><button onclick="ext()" class="fan nrt">向后</button></div>';
 	oct[oct.length] = act;
 }
 
